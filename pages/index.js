@@ -1,3 +1,5 @@
+import { client } from '../lib/apollo';
+import { gql } from "@apollo/client";
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import PostCard from '../components/PostCard';

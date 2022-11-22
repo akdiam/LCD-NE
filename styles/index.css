@@ -1,9 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
     padding: 0;
     margin: 0;
     font-family: var(--bs-font-sans-serif);
+    background-color: #f7f7f7eb;
 }
 
 * {
@@ -15,7 +19,7 @@ body {
     --eggplant-gradient: linear-gradient(260.85deg,#7e5cef 10.29%,#002838 89.71%);
 }
  h1 {
-     background: var(--eggplant-gradient);
+     background: black;
      background-clip: text;
      -webkit-background-clip: text;
      -moz-background-clip: text;
