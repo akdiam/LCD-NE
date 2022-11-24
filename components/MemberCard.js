@@ -14,8 +14,13 @@ const MemberCard = ({ member, isExec }) => {
           {member.name}
         </div>
       }
-      <div className="pb-10 text-center align-middle m-auto font-thin text-xs md:text-sm text-sky-700">
-        {member.lcdPositionTitle && member.lcdPositionTitle}
+      {member.lcdPositionTitle && (
+        <div className="pb-10 text-center align-middle m-auto font-thin text-xs md:text-sm text-sky-700">
+          {member.lcdPositionTitle && member.lcdPositionTitle}
+        </div>
+      )}
+      <div className="pb-10 text-center align-middle m-auto font-thin text-xs md:text-sm text-slate-500 truncate">
+        {member.company && member.company}
       </div>
     </button>
   )

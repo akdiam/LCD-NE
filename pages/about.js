@@ -14,7 +14,7 @@ export default function About({ members, affiliateEntities }) {
     <div>
       <div className="max-w-screen-lg flex flex-wrap flex-row m-auto content-center">
         <div className="w-full m-4 text-4xl py-12 md:leading-relaxed">
-          The Lawyers Collaborative for Diversity (LCD) mission is to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law and gain access to an abundance of satisfying professional opportunities.      
+          The Lawyers Collaborative for Diversity (LCD) mission is to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law.      
         </div>
       </div>
       <div className="pb-8">
@@ -110,6 +110,7 @@ export async function getStaticProps() {
             description
             email
             phoneNumber
+            company
             headshotImage {
               sourceUrl
             }
