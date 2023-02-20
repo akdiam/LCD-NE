@@ -1,15 +1,19 @@
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
+import Header from '../components/common/Header';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
 }
 
-export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent }) {
+export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl }) {
   return (
-    <div className="max-w-screen-lg m-auto">
-      <div dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
-    </div>  
+    <div>
+      <Header lcdLogoUrl={lcdLogoUrl} />
+      <div className="max-w-screen-lg m-auto pt-20">
+        <div className="m-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
+      </div>  
+    </div>
   );
 };
 
@@ -21,16 +25,21 @@ export async function getStaticProps() {
           content
         }
       }
+      mediaItemBy(id: "cG9zdDoyMzU=") {
+        sourceUrl
+      }
     }
   `
   const response = await client.query({
     query: GET_FOR_PROF_STUDENTS_CONTENT
   });
   const forProfessionalsAndStudentsContent = response?.data?.pages?.nodes[0]?.content;
+  const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
 
   return {
     props: {
-      forProfessionalsAndStudentsContent
+      forProfessionalsAndStudentsContent,
+      lcdLogoUrl
     }
   }
 }

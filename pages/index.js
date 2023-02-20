@@ -1,51 +1,43 @@
-import { client } from '../lib/apollo';
+import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
-import Head from 'next/head';
-import Footer from '../components/Footer';
-import PostCard from '../components/PostCard';
-import { getAllPosts } from '../lib/test-data';
+import Header from '../components/common/Header';
 
-
-export default function Home({ posts }) {
+export default function Home({ lcdLogoUrl }) {
   return (
-    <div className="container">
-      <Head>
-        <title>Headless WP Next Starter</title>
-        <link rel="icon" href="favicon.ico"></link>
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Headless WordPress Next.js Starter
-        </h1>
-
-        <p className="description">
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className="grid">
-          {
-            posts.map((post) => {
-              return (
-                <PostCard key={post.uri} post={post}></PostCard>
-              )
-            })
-          }
+    <div>
+      <Header lcdLogoUrl={lcdLogoUrl} />
+      <div className="slant box-border">
+        <div className="mask-container">
+          <div className="mask-background bg-slate-900" />
         </div>
-      </main>
-
-      <Footer></Footer>
+        <div className="content-container flex relative bg-slate-900 text-white pt-8 md:pt-28 h-full">
+          <div className="max-w-screen-lg m-auto text-center px-12">
+            Dedicated to building a legal community in which all lawyers can thrive and succeed.
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
 
 export async function getStaticProps(){
+  const GET_HOME_INFO = gql`
+    query GetHomeInfo {
+      mediaItemBy(id: "cG9zdDoyMzU=") {
+        sourceUrl
+      }
+    }
+  `
 
-  const response = await getAllPosts()
-  const posts = response?.data?.posts?.nodes
+  const response = await client.query({
+    query: GET_HOME_INFO
+  });
+
+  const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+
   return {
     props: {
-      posts
+      lcdLogoUrl
     }
   }
 }

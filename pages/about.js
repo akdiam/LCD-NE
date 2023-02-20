@@ -4,23 +4,24 @@ import { parseMembers } from '../util/parseMembers';
 import { parseEntities } from '../util/parseEntities';
 import MemberCard from '../components/MemberCard';
 import EntityCard from '../components/EntityCard';
-import MemberModal from '../components/MemberModal';
+import Header from '../components/common/Header';
+import PageHeader from '../components/common/PageHeader.js';
+import BoardOfDirectorsList from '../components/about/BoardOfDirectorsList.js';
+import LeadershipWidget from '../components/about/LeadershipWidget.js';
+import LogoCloud from '../components/about/LogoCloud.js';
 
-export default function About({ members, affiliateEntities }) {
+export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
+  const name = "Our mission is to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law.";
+  const description = "The Lawyers Collaborative for Diversity (LCD) mission is to unify Connecticut’s leading law firms, corporations, public sector entities, law schools, and state bar associations around one common goal: to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law and gain access to an abundance of satisfying professional opportunities.";
+
   return (
     <div>
-      <div className="max-w-screen-lg flex flex-wrap flex-row m-auto content-center">
-        <div className="w-full m-4 text-4xl py-12 md:leading-relaxed">
-          The Lawyers Collaborative for Diversity (LCD) mission is to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law.      
-        </div>
-      </div>
-      <div className="pb-8">
-        <img className="w-full" src="/page_headers_oath.jpg" />
-      </div>
-      <div className= "max-w-screen-lg flex flex-wrap flex-row m-auto content-center">
+      <Header lcdLogoUrl={lcdLogoUrl} />
+      <PageHeader name={name} />
+      <div className= "max-w-6xl flex flex-wrap flex-row m-auto content-center">
         <div className="w-full m-4">
           <h2 className="text-4xl pb-8">Our History</h2>
           <div className="text-2xl">
@@ -35,7 +36,8 @@ export default function About({ members, affiliateEntities }) {
   We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
           </div>
         </div>
-        <div className="w-full m-4">
+        <LeadershipWidget />
+        {/*<div className="w-full m-4">
           <h2 className="text-4xl pb-2">Meet our Team</h2>
         </div>
         <div className="m-auto justify-center flex text-center pb-4">
@@ -47,25 +49,14 @@ export default function About({ members, affiliateEntities }) {
         </div>
         <div className="m-auto justify-center flex flex-wrap text-center pb-4">
           {execCommittee.map((execMember, _) => {
-            return ( 
+            return (
               <MemberCard key={execMember.name} member={execMember} isExec={true} />
             )
           })}
-        </div>
-        <div className="w-full m-4">
-          <h2 className="text-4xl pb-4">Board of Directors</h2>
-          <span className="text-lg font-thin">
-            The LCD Board of Directors is a collective of like-minded individuals who are committed to being catalysts for change in the legal profession. Comprised of leaders from our member organizations and representative of the diversity we want to see throughout Connecticut, our board members have chosen to take an active role in ensuring the success of our overall mission and goals.
-          </span>
-        </div>
-        <div className="m-auto pb-10 justify-center flex flex-wrap text-center">
-          {boardOfDirectors.map((bodMember, _) => {
-            return ( 
-              <MemberCard key={bodMember.name} member={bodMember} isExec={false} />
-            )
-          })}
-        </div>
-        <div className="w-full m-4">
+        </div>*/}
+        <BoardOfDirectorsList members={boardOfDirectors} />
+        <LogoCloud sectionName={'Members'} entities={memberEntities} />
+        {/*<div className="w-full m-4">
           <h2 className="text-4xl pb-4">Members</h2>
         </div>
         <div className="m-auto pb-10 justify-center flex flex-wrap text-center">
@@ -94,7 +85,7 @@ export default function About({ members, affiliateEntities }) {
               <EntityCard key={entity.name} entity={entity} />
             )
           })}
-        </div>
+        </div>*/}
       </div>
     </div>
   )
@@ -132,6 +123,9 @@ export async function getStaticProps() {
           title
         }
       }
+      mediaItemBy(id: "cG9zdDoyMzU=") {
+        sourceUrl
+      }
     }
   `
   
@@ -143,11 +137,13 @@ export async function getStaticProps() {
   // data we want to pass into the HomePage
   const members = response?.data?.members?.nodes; 
   const affiliateEntities = response?.data?.affiliateEntities?.nodes;
+  const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
 
   return {
     props: {
       members,
-      affiliateEntities
+      affiliateEntities,
+      lcdLogoUrl
     }
   }
 }
