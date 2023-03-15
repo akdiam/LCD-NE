@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 html,
 body {
     padding: 0;
@@ -9,6 +5,10 @@ body {
     font-family: var(--bs-font-sans-serif);
     @apply bg-lcdYellow;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
     box-sizing: border-box;
@@ -59,19 +59,4 @@ p {
 
 a {
     color: #ffdb59;
-}
-
-.slick-prev {
-    left: -40px !important;
-    width: 30px !important;
-}
-
-.slick-next {
-    right: -40px !important;
-    width: 30px !important;
-}
-
-.slick-prev::before, .slick-next::before {
-    color: #000a1f !important;
-    font-size: 30px !important;
 }

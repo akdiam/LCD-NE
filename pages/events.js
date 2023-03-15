@@ -4,6 +4,7 @@ import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
 import Footer from '../components/common/Footer.js';
+import { AnimatedHeader } from '../components/common/AnimatedHeader.js';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
@@ -20,7 +21,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(eventsContent)} />
           </div>
           <div className='lg:col-span-2'>
-            <div className="font-extrabold text-3xl lg:text-5xl pb-6">Upcoming Events</div>
+            <AnimatedHeader text='Upcoming Events' textColor='text-secondary' textSize='text-3xl' underlineColor='text-secondary' />
             <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
               <EventList events={events} />
             </div>
