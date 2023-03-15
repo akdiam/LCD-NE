@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
+import Footer from '../components/common/Footer.js';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
@@ -26,6 +27,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

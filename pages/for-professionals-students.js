@@ -6,6 +6,7 @@ import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import JobList from '../components/forProfessionalsStudents/JobList.js';
 import { JobFilter } from '../components/forProfessionalsStudents/JobFilter.js';
+import Footer from "../components/common/Footer.js";
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
@@ -27,7 +28,7 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
       <PageHeader name='For Professionals & Students'  headerBackgroundImageClass='bg-forProfessionalsStudents' />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className='lg:col-span-3 lg:pr-10'>        
+          <div className='lg:col-span-3 lg:pr-16'>        
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
           </div>
           <div className='lg:col-span-2'>
@@ -43,6 +44,7 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

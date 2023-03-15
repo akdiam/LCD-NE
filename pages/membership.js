@@ -1,6 +1,7 @@
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
 import Header from '../components/common/Header/Header.js';
+import Footer from '../components/common/Footer.js';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
@@ -13,6 +14,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
       <div className="max-w-screen-lg m-auto pt-20">
         <div className="m-4" dangerouslySetInnerHTML={createHtml(membershipPageContent)} />
       </div>
+      <Footer />
     </div>
   );
 };

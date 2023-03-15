@@ -2,13 +2,12 @@ import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
 import { parseMembers } from '../util/parseMembers';
 import { parseEntities } from '../util/parseEntities';
-import MemberCard from '../components/MemberCard';
-import EntityCard from '../components/EntityCard';
 import Header from '../components/common/Header/Header';
 import PageHeader from '../components/common/PageHeader.js';
 import BoardOfDirectorsList from '../components/about/BoardOfDirectorsList.js';
 import LeadershipWidget from '../components/about/LeadershipWidget.js';
 import LogoCloud from '../components/about/LogoCloud.js';
+import Footer from '../components/common/Footer.js';
 
 export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
@@ -52,6 +51,7 @@ We will continue to champion the development of future lawyers from diverse back
         <BoardOfDirectorsList members={boardOfDirectors} />
         <LogoCloud sectionName={'Members'} entities={memberEntities} />
       </div>
+      <Footer />
     </div>
   )
 }

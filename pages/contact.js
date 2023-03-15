@@ -3,6 +3,7 @@ import { gql } from "@apollo/client";
 import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import ContactForm from '../components/contact/ContactForm.js';
+import Footer from '../components/common/Footer.js';
 
 export default function ContactPage({ lcdLogoUrl }) {
   return (
@@ -10,6 +11,7 @@ export default function ContactPage({ lcdLogoUrl }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader name='Contact Us' />
       <ContactForm />
+      <Footer />
     </div>
   );
 };
