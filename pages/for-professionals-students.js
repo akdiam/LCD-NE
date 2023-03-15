@@ -77,11 +77,6 @@ export async function getStaticProps() {
 
   const response = await client.query({
     query: GET_FOR_PROF_STUDENTS_CONTENT,
-    context: {
-      fetchOptions: {
-        next:{ revalidate: 20 },
-      },
-    },
   });
 
   const forProfessionalsAndStudentsContent = response?.data?.pages?.nodes[0]?.content;
@@ -101,6 +96,7 @@ export async function getStaticProps() {
       forProfessionalsAndStudentsContent,
       lcdLogoUrl,
       jobs,
-    }
+    },
+    revalidate: 20,
   }
 }

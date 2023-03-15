@@ -95,11 +95,6 @@ export async function getStaticProps() {
   
   const response = await client.query({
     query: GET_ABOUT_INFO,
-    context: {
-      fetchOptions: {
-        next:{ revalidate: 20 },
-      },
-    },
   });
 
   // Once we get the response back, we need to traverse it to pull out the 
@@ -112,7 +107,8 @@ export async function getStaticProps() {
     props: {
       members,
       affiliateEntities,
-      lcdLogoUrl
-    }
+      lcdLogoUrl,
+    },
+    revalidate: 20,
   }
 }

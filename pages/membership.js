@@ -34,11 +34,6 @@ export async function getStaticProps() {
   `
   const response = await client.query({
     query: GET_MEMBERSHIP_PAGE_CONTENT,
-    context: {
-      fetchOptions: {
-        next:{ revalidate: 60 },
-      },
-    },
   });
   const membershipPageContent = response?.data?.pages?.nodes[0]?.content;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
@@ -46,7 +41,8 @@ export async function getStaticProps() {
   return {
     props: {
       membershipPageContent,
-      lcdLogoUrl
-    }
+      lcdLogoUrl,
+    },
+    revalidate: 60,
   }
 }
