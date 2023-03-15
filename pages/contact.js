@@ -32,7 +32,7 @@ export async function getStaticProps() {
   return {
     props: {
       lcdLogoUrl,
-      revalidate: 120,
-    }
+    },
+    revalidate: 120,
   }
 }
