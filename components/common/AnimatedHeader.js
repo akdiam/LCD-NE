@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 const onLoadAndResize = (textNoSpace, textSize) => {
+  console.log('hey');
   const sectionTitle = document.getElementById(`sectionTitle-${textNoSpace}`);
   const sectionTitleWidth = sectionTitle.getBoundingClientRect().width;
   const tempSpan = document.createElement('span');
@@ -8,10 +9,9 @@ const onLoadAndResize = (textNoSpace, textSize) => {
   tempSpan.classList.add(textSize)
   tempSpan.textContent = sectionTitle.textContent;
   document.body.appendChild(tempSpan);
-
-  setTimeout(() => {
-    sectionTitle.style.height = `${tempSpan.offsetHeight + 24}px`;
-  }, 50)
+  sectionTitle.style.height = `${tempSpan.offsetHeight + 24}px`;
+  console.log(tempSpan.offsetHeight);
+  document.body.removeChild(tempSpan);
 };
 
 export const AnimatedHeader = ({ text, textColor, textSize, underlineColor }) => {
@@ -37,6 +37,7 @@ export const AnimatedHeader = ({ text, textColor, textSize, underlineColor }) =>
       });
     });
     observer.observe(el);
+    onLoadAndResize(textNoSpace, textSize);
 
     const loadEventListener = window.addEventListener('load', () => onLoadAndResize(textNoSpace, textSize));
     const resizeEventListener = window.addEventListener('resize', () => onLoadAndResize(textNoSpace, textSize));
