@@ -26,6 +26,7 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
         <ul role="list" className="grid gap-x-8 gap-y-12 grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {execCommittee.map((exec) => (
             <LeaderCard 
+              key={exec.name}
               titleColor='text-yellow-100' 
               headshotSrc={exec.headshotImage.sourceUrl} 
               name={exec.name} 
