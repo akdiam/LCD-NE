@@ -41,7 +41,12 @@ export async function getStaticProps(){
   `
 
   const response = await client.query({
-    query: GET_HOME_INFO
+    query: GET_HOME_INFO,
+    context: {
+      fetchOptions: {
+        next:{ revalidate: 20 },
+      },
+    },
   });
 
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;

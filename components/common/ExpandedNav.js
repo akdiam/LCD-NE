@@ -1,5 +1,4 @@
 import { navigation } from "./Footer";
-import { Transition } from "@headlessui/react";
 
 export default function ExpandedNav({ show }) {
   return (

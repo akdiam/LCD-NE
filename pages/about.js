@@ -14,7 +14,6 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
   const name = "Our mission is to make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.";
-  const description = "The Lawyers Collaborative for Diversity (LCD) mission is to unify Connecticut’s leading law firms, corporations, public sector entities, law schools, and state bar associations around one common goal: to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law and gain access to an abundance of satisfying professional opportunities.";
   const headerBackgroundImageClass = 'bg-about';
 
   return (
@@ -95,7 +94,12 @@ export async function getStaticProps() {
   `
   
   const response = await client.query({
-    query: GET_ABOUT_INFO
+    query: GET_ABOUT_INFO,
+    context: {
+      fetchOptions: {
+        next:{ revalidate: 20 },
+      },
+    },
   });
 
   // Once we get the response back, we need to traverse it to pull out the 

@@ -2,13 +2,6 @@ import { useState } from 'react'
 import { Cross as Hamburger } from 'hamburger-react';
 import ExpandedNav from '../ExpandedNav';
 
-const navOptions = [
-  { name: 'About', href: '/about', current: false },
-  { name: 'Membership', href: '/membership', current: false },
-  { name: 'Opportunities', href: '/for-professionals-students', current: false },
-  { name: 'Events', href: '/events', current: false },
-]
-
 export default function HeaderComponent({ lcdLogoUrl }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
