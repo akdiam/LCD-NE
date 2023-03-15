@@ -17,8 +17,8 @@ export default function HeaderComponent({ lcdLogoUrl }) {
             </div>
           </div>
           <div className='w-1/2 text-right my-auto pt-4'>
-            <div className='float-right bg-yellow-300 p-1 w-14 h-14 rounded-full drop-shadow-md'>
-              <Hamburger rounded color='#000a1f' direction='right' duration={0.2} onToggle={() => setIsNavOpen(!isNavOpen)} />
+            <div className='float-right bg-yellow-300 p-1 rounded-full drop-shadow-md'>
+              <Hamburger rounded color='#000a1f' size={26} direction='right' duration={0.2} onToggle={() => setIsNavOpen(!isNavOpen)} />
             </div>
           </div>
         </div>

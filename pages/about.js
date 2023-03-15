@@ -19,27 +19,35 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name={name} headerBackgroundImageClass={headerBackgroundImageClass} />
+      <PageHeader name={'About'} headerBackgroundImageClass={headerBackgroundImageClass} />
       <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
-        <div className="w-full m-4 max-w-6xl px-6 mx-auto">
-          <h2 className="text-5xl font-bold pt-12 sm:pt-20 pb-6">Our Story</h2>
-          <div className="text-2xl font-normal leading-10">
+        <div className='w-full bg-secondary text-white py-24 sm:py-36'>
+          <div className='max-w-6xl px-6 mx-auto'>
+            <h2 className="text-lg sm:text-3xl font-normal text-gray-400 sm:font-semibold pb-6 leading-loose">Our Mission</h2>
+            <div className="text-4xl lg:text-7xl font-bold leading-tight sm:leading-8">
+              To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.
+            </div>
+          </div>
+        </div>
+        <div className="w-full max-w-6xl px-6 mx-auto py-24 sm:py-36">
+          <h2 className="text-lg sm:text-3xl text-gray-400 font-normal sm:font-semibold leading-loose mb-4">Our Story</h2>
+          <div className="text-4xl lg:text-5xl text-black font-normal leading-snug">
             LCD began in 2003 as The Connecticut Lawyers Group, in response to the need to advance diversity in Connecticut’s legal profession.
           </div>
           <br />
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 py-12'>
-            <img className='rounded-md w-full h-auto object-cover' src='leadership.jpg' />
-            <div className='leading-8 text-lg my-auto font-thin sm:px-12'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 pb-12'>
+            <img className='rounded-md my-auto w-full h-auto object-cover shadow-lg' src='leadership.jpg' />
+            <div className='flex justify-center align-center flex-col leading-loose text-xl my-auto font-thin text-black sm:mx-12 h-full border-t-4 border-b-4 border-blue-500 rounded-sm py-4'>
               Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color. However, as the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 pb-24'>
-            <div className='leading-8 text-lg my-auto font-thin sm:px-12'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12'>
+            <div className='flex justify-center align-center flex-col leading-loose text-lg my-auto font-thin text-black sm:mx-12 h-full border-t-4 border-b-4 border-blue-500 rounded-sm'>
             The students and professionals that have participated in our programs over the years have gone on to have very successful careers. Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers.
 
 We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
             </div>
-            <img className='rounded-md w-full h-auto object-cover' src='students.webp' />
+            <img className='rounded-md my-auto w-full h-auto object-cover shadow-lg' src='students.webp' />
           </div>
         </div>
         <LeadershipWidget 

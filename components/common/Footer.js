@@ -10,7 +10,7 @@ export const navigation = {
   social: [
     {
       name: 'Facebook',
-      href: '#',
+      href: 'https://www.facebook.com/LawyersCollaborativeForDiversity/',
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path
@@ -23,7 +23,7 @@ export const navigation = {
     },
     {
       name: 'Instagram',
-      href: '#',
+      href: 'https://www.instagram.com/lcd_ne/',
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path
@@ -36,7 +36,7 @@ export const navigation = {
     },
     {
       name: 'YouTube',
-      href: '#',
+      href: 'https://www.youtube.com/@lawyerscollaborativefordiv8778',
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path

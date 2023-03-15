@@ -21,7 +21,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(eventsContent)} />
           </div>
           <div className='lg:col-span-2'>
-            <AnimatedHeader text='Upcoming Events' textColor='text-secondary' textSize='text-3xl' underlineColor='text-secondary' />
+            <div className='font-bold text-3xl lg:text-4xl pb-6'>Upcoming Events</div>
             <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
               <EventList events={events} />
             </div>
