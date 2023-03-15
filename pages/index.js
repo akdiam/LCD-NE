@@ -1,21 +1,32 @@
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
-import Header from '../components/common/Header';
+import Header from '../components/common/Header/Header.js';
+import Footer from '../components/common/Footer.js';
+import Announcements from '../components/home/Announcements.js';
 
 export default function Home({ lcdLogoUrl }) {
   return (
-    <div>
+    <div className='w-full'>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <div className="slant box-border">
-        <div className="mask-container">
-          <div className="mask-background bg-slate-900" />
+      <div className='h-screen md:h-screen bg-hero bg-cover bg-center bg-top text-center'>
+        <div className='text-white text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold max-w-6xl mx-auto my-auto pt-90pcnt md:pt-30pcnt px-6'>
+          Dedicated to building a legal community in which all lawyers can thrive and succeed.
         </div>
-        <div className="content-container flex relative bg-slate-900 text-white pt-8 md:pt-28 h-full">
-          <div className="max-w-screen-lg m-auto text-center px-12">
-            Dedicated to building a legal community in which all lawyers can thrive and succeed.
-          </div>
-        </div>
+        <button className='bg-yellow-300 mt-12 p-3 rounded-md'>
+          <a className='text-black font-bold' href='/about'>
+            <span>
+              Click to learn more
+            </span>
+          </a>
+        </button>
       </div>
+      <div className='bg-white'>
+        <Announcements />
+      </div>
+      <div className='bg-slate-900'>
+        hi
+      </div>
+      <Footer />
     </div>
   )
 }

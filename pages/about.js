@@ -4,7 +4,7 @@ import { parseMembers } from '../util/parseMembers';
 import { parseEntities } from '../util/parseEntities';
 import MemberCard from '../components/MemberCard';
 import EntityCard from '../components/EntityCard';
-import Header from '../components/common/Header';
+import Header from '../components/common/Header/Header';
 import PageHeader from '../components/common/PageHeader.js';
 import BoardOfDirectorsList from '../components/about/BoardOfDirectorsList.js';
 import LeadershipWidget from '../components/about/LeadershipWidget.js';
@@ -14,78 +14,43 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
-  const name = "Our mission is to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law.";
+  const name = "Our mission is to make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.";
   const description = "The Lawyers Collaborative for Diversity (LCD) mission is to unify Connecticut’s leading law firms, corporations, public sector entities, law schools, and state bar associations around one common goal: to make Connecticut and Western Massachusetts a prime location for attorneys of color to practice law and gain access to an abundance of satisfying professional opportunities.";
+  const headerBackgroundImageClass = 'bg-about';
 
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name={name} />
-      <div className= "max-w-6xl flex flex-wrap flex-row m-auto content-center">
-        <div className="w-full m-4">
-          <h2 className="text-4xl pb-8">Our History</h2>
-          <div className="text-2xl">
+      <PageHeader name={name} headerBackgroundImageClass={headerBackgroundImageClass} />
+      <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
+        <div className="w-full m-4 max-w-6xl px-6 mx-auto">
+          <h2 className="text-5xl font-bold pt-12 sm:pt-20 pb-6">Our Story</h2>
+          <div className="text-2xl font-normal leading-10">
             LCD began in 2003 as The Connecticut Lawyers Group, in response to the need to advance diversity in Connecticut’s legal profession.
           </div>
           <br />
-          <div className="text-lg font-thin">
-            Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color. However, as the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 py-12'>
+            <img className='rounded-md w-full h-auto object-cover' src='leadership.jpg' />
+            <div className='leading-8 text-lg my-auto font-thin sm:px-12'>
+              Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color. However, as the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
+            </div>
+          </div>
+          <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 pb-24'>
+            <div className='leading-8 text-lg my-auto font-thin sm:px-12'>
+            The students and professionals that have participated in our programs over the years have gone on to have very successful careers. Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers.
 
-  The students and professionals that have participated in our programs over the years have gone on to have very successful careers. Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers.
-
-  We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
+We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
+            </div>
+            <img className='rounded-md w-full h-auto object-cover' src='students.webp' />
           </div>
         </div>
-        <LeadershipWidget />
-        {/*<div className="w-full m-4">
-          <h2 className="text-4xl pb-2">Meet our Team</h2>
-        </div>
-        <div className="m-auto justify-center flex text-center pb-4">
-            <MemberCard member={executiveDirector} isExec={true} />
-            <MemberCard member={operationsManager} isExec={true} />
-        </div>
-        <div className="w-full m-4">
-          <h2 className="text-4xl pb-2">Executive Committee</h2>
-        </div>
-        <div className="m-auto justify-center flex flex-wrap text-center pb-4">
-          {execCommittee.map((execMember, _) => {
-            return (
-              <MemberCard key={execMember.name} member={execMember} isExec={true} />
-            )
-          })}
-        </div>*/}
+        <LeadershipWidget 
+          executiveDirector={executiveDirector} 
+          operationsManager={operationsManager}
+          execCommittee={execCommittee}
+        />
         <BoardOfDirectorsList members={boardOfDirectors} />
         <LogoCloud sectionName={'Members'} entities={memberEntities} />
-        {/*<div className="w-full m-4">
-          <h2 className="text-4xl pb-4">Members</h2>
-        </div>
-        <div className="m-auto pb-10 justify-center flex flex-wrap text-center">
-          {memberEntities.map((entity, _) => {
-            return ( 
-              <EntityCard key={entity.name} entity={entity} />
-            )
-          })}
-        </div>
-        <div className="w-full m-4">
-          <h2 className="text-4xl pb-4">Affiliated Organizations</h2>
-        </div>
-        <div className="m-auto pb-10 justify-center flex flex-wrap text-center">
-          {affiliateOrganizations.map((entity, _) => {
-            return ( 
-              <EntityCard key={entity.name} entity={entity} />
-            )
-          })}
-        </div>
-        <div className="w-full m-4">
-          <h2 className="text-4xl pb-4">Affiliated Law Schools</h2>
-        </div>
-        <div className="m-auto pb-10 justify-center flex flex-wrap text-center">
-          {lawSchools.map((entity, _) => {
-            return ( 
-              <EntityCard key={entity.name} entity={entity} />
-            )
-          })}
-        </div>*/}
       </div>
     </div>
   )

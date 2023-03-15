@@ -1,6 +1,6 @@
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
-import Header from '../components/common/Header';
+import Header from '../components/common/Header/Header.js';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
