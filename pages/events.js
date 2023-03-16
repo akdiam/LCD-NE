@@ -25,7 +25,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
           <div className='order-last sm:order-first lg:col-span-3 lg:pr-10'>
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(eventsContent)} />
           </div>
-          <div className='order-first sm:order-last pb-24 sm:pb-0 lg:col-span-2'>
+          <div className='order-first sm:order-last pb-24 sm:pb-0 lg:col-span-2 lg:pt-5'>
             <div className='font-bold text-3xl lg:text-4xl pb-6'>Upcoming Events</div>
             <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
               <EventList events={events} />

@@ -4,7 +4,7 @@ export const JobFilter = ({ allJobs, allEmployers, setSelectedJobs }) => {
   const [selectedEmployers, setSelectedEmployers] = useState([]);
 
   const filterJobs = (newSelectedEmployers) => {
-    const filteredJobs = [];
+    let filteredJobs = [];
     if (newSelectedEmployers.length !== 0) {
       filteredJobs = allJobs.filter(job => newSelectedEmployers.includes(job.jobPosting.employer));
     } else {

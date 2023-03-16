@@ -20,7 +20,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader
-        title={'Our Mission'} 
+        title={'Our mission'} 
         subtitle={'To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.'} 
         headerBackgroundImageClass={headerBackgroundImageClass}
         subtitleSize='text-3xl lg:text-7xl'
@@ -28,7 +28,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
       />
       <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
         <div className="w-full max-w-6xl px-6 mx-auto py-24 sm:py-36">
-          <h2 className="text-xl sm:text-3xl text-gray-400 font-semibold leading-loose mb-4">Our Story</h2>
+          <div className="text-xl sm:text-3xl text-gray-400 font-semibold leading-loose mb-1">Our Story</div>
           <div className="text-3xl lg:text-5xl text-black font-normal leading-snug">
             LCD began in 2003 as The Connecticut Lawyers Group, in response to the need to advance diversity in Connecticut’s legal profession.
           </div>

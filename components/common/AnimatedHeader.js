@@ -50,9 +50,9 @@ export const AnimatedHeader = ({ text, textColor, textSize, underlineColor }) =>
   }, []);
 
   return (
-    <h2 className={`title-container-${textNoSpace} ${textColor} relative overflow-hidden ${textSize} font-bold pb-4 mb-6`} id={`sectionTitle-${textNoSpace}`}>
+    <div className={`title-container-${textNoSpace} ${textColor} relative overflow-hidden ${textSize} font-bold pb-4 mb-6`} id={`sectionTitle-${textNoSpace}`}>
       {text}
       <span className={tailwindClass}></span>
-    </h2>
+    </div>
   )
 }
