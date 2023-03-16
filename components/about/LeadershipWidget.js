@@ -44,8 +44,8 @@ const LeaderCard = ({ titleColor, headshotSrc, name, title }) => {
         <img className="h-48 saturate-50 hover:saturate-100 bg-gradient-to-b from-slate-800 to-transparent transition duration-100 ease-in w-full sm:h-64 sm:w-48 rounded-md object-cover" 
              src={headshotSrc} alt={name} />
         <div className="pt-2 sm:pt-0">
-          <h3 className="text-base sm:text-2xl font-semibold leading-7 tracking-tight text-white">{name}</h3>
-          <p className={`${titleColor} text-xs sm:text-sm font-normal leading-6 mt-0`}>{title}</p>
+          <div className="text-base sm:text-2xl font-semibold leading-7 tracking-tight text-white">{name}</div>
+          <div  className={`${titleColor} text-xs sm:text-sm font-normal leading-6 mt-0`}>{title}</div>
         </div>
       </div>
     </li>
