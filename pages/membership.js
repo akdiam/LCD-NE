@@ -17,7 +17,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
         subtitle='LCD welcomes new members who are looking to support diversity and inclusion in the legal profession.' 
         headerBackgroundImageClass='bg-membership'
         subtitleSize={'text-3xl lg:text-6xl'}
-        maxWidth={'lg:max-w-4xl'}
+        maxWidth={'lg:max-w-3xl'}
       />
       <div className="max-w-6xl px-6 m-auto py-24">
         <div className="" dangerouslySetInnerHTML={createHtml(membershipPageContent)} />

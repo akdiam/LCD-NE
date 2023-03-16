@@ -41,13 +41,13 @@ export default function EventList({ events }) {
               <div className="text-lg lg:text-3xl font-semibold text-yellow-300 pb-2">
                 {calcDisplayDate(event)}
               </div>
-              <div className="text-sm lg:text-md font-thin text-white">
+              <div className="text-sm lg:text-md font-md text-white">
                 {calcDisplayTimeRange(event)}
               </div>
-              <div className="text-xs lg:text-sm font-thin text-white">
+              <div className="text-xs lg:text-sm font-md text-gray-400">
                 {event?.events?.eventLocation}
               </div>
-              <div className="text-xs lg:text-sm font-thin text-white">
+              <div className="text-xs lg:text-sm font-thin text-gray-400">
                 {event?.events?.eventType === 'Virtual' && event?.events?.eventType}
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
+
 import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import JobList from '../components/forProfessionalsStudents/JobList.js';
@@ -29,14 +29,14 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         title='For Professionals & Students'
         headerBackgroundImageClass='bg-forProfessionalsStudents'
         subtitle={'LCD features job postings for organizations and attorneys across all practice areas.'}
-        subtitleSize='text-3xl lg:text-7xl' />
+        subtitleSize='text-3xl lg:text-5xl'
+        maxWidth='lg:max-w-3xl' 
+      />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className='order-last sm:order-first lg:col-span-3 lg:pr-16'>        
-            <div className="wp-text mb-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
-          </div>
-          <div className='order-first sm:order-last pb-24 sm:pb-0 lg:col-span-2 lg:pt-5'>
-            <div className="font-extrabold text-3xl lg:text-4xl pb-6">Career Opportunities</div>
+          <div className="order-last lg:order-first lg:col-span-3 lg:pr-16 wp-text mb-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
+          <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
+            <div className="font-extrabold text-4xl lg:text-6xl pb-6 text-blue-600">Browse Jobs</div>
             <JobFilter
               allJobs={jobs}
               allEmployers={employers}

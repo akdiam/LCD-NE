@@ -15,18 +15,18 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Events' 
-        subtitle={'LCD offers a robust programming schedule throughout the year, with various events that you can benefit from - no matter what.'} 
+        subtitle={'We offer a robust programming schedule throughout the year, with various events that you can benefit from - no matter what.'} 
         headerBackgroundImageClass='bg-events'
-        subtitleSize={'text-3xl lg:text-6xl'} 
+        subtitleSize={'text-3xl lg:text-5xl'} 
         maxWidth='lg:max-w-4xl'
       />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className='order-last sm:order-first lg:col-span-3 lg:pr-10'>
+          <div className='order-last lg:order-first lg:col-span-3 lg:pr-10'>
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(eventsContent)} />
           </div>
-          <div className='order-first sm:order-last pb-24 sm:pb-0 lg:col-span-2 lg:pt-5'>
-            <div className='font-bold text-3xl lg:text-4xl pb-6'>Upcoming Events</div>
+          <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
+            <div className='font-bold text-4xl lg:text-5xl pb-6 text-secondary-600'>Upcoming Events</div>
             <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
               <EventList events={events} />
             </div>
