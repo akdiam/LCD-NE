@@ -32,10 +32,10 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         subtitleSize='text-3xl lg:text-7xl' />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className='lg:col-span-3 lg:pr-16'>        
+          <div className='order-last sm:order-first lg:col-span-3 lg:pr-16'>        
             <div className="mb-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
           </div>
-          <div className='lg:col-span-2'>
+          <div className='order-first sm:order-last pb-24 sm:pb-0 lg:col-span-2'>
             <div className="font-extrabold text-3xl lg:text-4xl pb-6">Career Opportunities</div>
             <JobFilter
               allJobs={jobs}
