@@ -35,12 +35,12 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
           <br />
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 pb-12'>
             <img className='rounded-md my-auto w-full h-auto object-cover shadow-lg' src='leadership.jpg' />
-            <div className='flex justify-center align-center flex-col leading-loose text-xl my-auto font-thin text-black sm:mx-12 h-full sm:border-t-4 sm:border-b-4 sm:border-blue-500 rounded-sm py-4'>
+            <div className='flex justify-center align-center flex-col leading-relaxed text-xl my-auto font-normal text-black sm:mx-12 h-full sm:border-t-4 sm:border-b-4 sm:border-blue-500 rounded-sm'>
               Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color. However, as the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
             </div>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-0 sm:pt-12'>
-            <div className='order-last sm:order-first flex justify-center align-center flex-col leading-loose text-xl sm:text-lg my-auto font-thin text-black sm:mx-12 h-full sm:border-t-4 sm:border-b-4 sm:border-blue-500 rounded-sm'>
+            <div className='order-last sm:order-first flex justify-center align-center flex-col leading-relaxed text-xl sm:text-lg my-auto font-normal text-black sm:mx-12 h-full sm:border-t-4 sm:border-b-4 sm:border-blue-500 rounded-sm'>
             The students and professionals that have participated in our programs over the years have gone on to have very successful careers. Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers.
 
 We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
