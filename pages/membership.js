@@ -12,7 +12,13 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name='Membership' headerBackgroundImageClass='bg-membership' />
+      <PageHeader 
+        title='Membership' 
+        subtitle='LCD welcomes new members who are looking to support diversity and inclusion in the legal profession.' 
+        headerBackgroundImageClass='bg-membership'
+        subtitleSize={'text-3xl lg:text-6xl'}
+        maxWidth={'lg:max-w-4xl'}
+      />
       <div className="max-w-6xl px-6 m-auto py-24">
         <div className="" dangerouslySetInnerHTML={createHtml(membershipPageContent)} />
       </div>

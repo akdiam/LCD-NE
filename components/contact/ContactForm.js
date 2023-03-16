@@ -10,7 +10,7 @@ export default function ContactForm() {
       <div className="relative mx-auto max-w-6xl lg:grid lg:grid-cols-5">
         <div className="py-16 px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
           <div className="mx-auto max-w-lg">
-            <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">Interested in LCD?</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">LCD Contact form</h2>
             <p className="mt-3 text-lg leading-6 text-gray-500">
               Contact us via email below, or sign up for our mailing list with the sign-up form.
             </p>

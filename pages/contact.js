@@ -9,7 +9,12 @@ export default function ContactPage({ lcdLogoUrl }) {
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name='Contact Us' headerBackgroundImageClass='bg-contact' />
+      <PageHeader 
+        title='Interested in our mission?' 
+        headerBackgroundImageClass='bg-contact'
+        subtitle={'Reach out. Sign up.'}
+        subtitleSize='text-3xl lg:text-7xl'
+      />
       <ContactForm />
       <Footer />
     </div>

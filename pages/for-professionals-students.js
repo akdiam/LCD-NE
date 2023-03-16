@@ -25,7 +25,11 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name='For Professionals & Students'  headerBackgroundImageClass='bg-forProfessionalsStudents' />
+      <PageHeader 
+        title='For Professionals & Students'
+        headerBackgroundImageClass='bg-forProfessionalsStudents'
+        subtitle={'LCD features job postings for organizations and attorneys across all practice areas.'}
+        subtitleSize='text-3xl lg:text-7xl' />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
           <div className='lg:col-span-3 lg:pr-16'>        

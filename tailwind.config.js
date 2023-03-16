@@ -14,7 +14,7 @@ module.exports = {
       backgroundImage: {
         'hero': "linear-gradient( rgba(0, 10, 31, 0.0), rgba(0, 10, 31, 0.55) ), url('../public/Hero_LCD_v2.jpg')",
         'about': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.9) ), url('../public/page_headers_oath.jpg')",
-        'events': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/img_LCD_event-hug.png')",
+        'events': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/img_LCD_event-hug.jpeg')",
         'membership': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/membership_header.jpg')",
         'forProfessionalsStudents': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/for_professionals_students_header.jpg')",
         'contact': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/contact_header.jpg')",

@@ -19,16 +19,14 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name={'About'} headerBackgroundImageClass={headerBackgroundImageClass} />
+      <PageHeader
+        title={'Our Mission'} 
+        subtitle={'To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.'} 
+        headerBackgroundImageClass={headerBackgroundImageClass}
+        subtitleSize='text-3xl lg:text-7xl'
+        maxWidth={'lg:max-w-4xl'}
+      />
       <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
-        <div className='w-full bg-secondary text-white py-24 sm:py-36'>
-          <div className='max-w-6xl px-6 mx-auto'>
-            <h2 className="text-lg sm:text-3xl font-normal text-gray-400 sm:font-semibold pb-6 leading-loose">Our Mission</h2>
-            <div className="text-4xl lg:text-7xl font-bold leading-tight sm:leading-8">
-              To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.
-            </div>
-          </div>
-        </div>
         <div className="w-full max-w-6xl px-6 mx-auto py-24 sm:py-36">
           <h2 className="text-lg sm:text-3xl text-gray-400 font-normal sm:font-semibold leading-loose mb-4">Our Story</h2>
           <div className="text-4xl lg:text-5xl text-black font-normal leading-snug">

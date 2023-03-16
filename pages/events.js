@@ -4,7 +4,6 @@ import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
 import Footer from '../components/common/Footer.js';
-import { AnimatedHeader } from '../components/common/AnimatedHeader.js';
 
 const createHtml = (htmlString) => {
   return {__html: htmlString};
@@ -14,7 +13,13 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
   return (
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
-      <PageHeader name='Events' headerBackgroundImageClass='bg-events' />
+      <PageHeader 
+        title='Events' 
+        subtitle={'LCD offers a robust programming schedule throughout the year, with various events that you can benefit from - no matter what.'} 
+        headerBackgroundImageClass='bg-events'
+        subtitleSize={'text-3xl lg:text-6xl'} 
+        maxWidth='lg:max-w-4xl'
+      />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
           <div className='lg:col-span-3 lg:pr-10'>
