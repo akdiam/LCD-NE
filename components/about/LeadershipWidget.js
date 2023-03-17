@@ -28,7 +28,8 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
               titleColor='text-yellow-100' 
               headshotSrc={exec.headshotImage.sourceUrl} 
               name={exec.name} 
-              title={exec.lcdPositionTitle} 
+              title={exec.lcdPositionTitle}
+              employer={exec.company}
             />
           ))}
         </ul>
@@ -37,7 +38,7 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
   )
 }
 
-const LeaderCard = ({ titleColor, headshotSrc, name, title }) => {
+const LeaderCard = ({ titleColor, headshotSrc, name, title, employer }) => {
   return (
     <li key={name}>
       <div className="flex sm:items-center gap-x-6 flex-col sm:flex-row">
@@ -46,6 +47,7 @@ const LeaderCard = ({ titleColor, headshotSrc, name, title }) => {
         <div className="pt-2 sm:pt-0">
           <div className="text-base sm:text-2xl font-semibold leading-7 tracking-tight text-white">{name}</div>
           <div  className={`${titleColor} text-xs sm:text-sm font-normal leading-6 mt-0`}>{title}</div>
+          {employer && <div className={`text-gray-400 text-xs sm:text-sm font-normal leading-6 mt-0`}>{employer}</div>}
         </div>
       </div>
     </li>

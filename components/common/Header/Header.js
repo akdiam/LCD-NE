@@ -18,7 +18,7 @@ export default function HeaderComponent({ lcdLogoUrl }) {
     });
 
     return (() => window.removeEventListener('scroll', handleScroll));
-  })
+  });
 
   return (
     <>
