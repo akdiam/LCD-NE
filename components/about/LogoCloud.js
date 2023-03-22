@@ -8,9 +8,9 @@ export default function LogoCloud({ sectionName, entities }) {
         <div className="-mx-6 grid grid-cols-2 gap-2 overflow-hidden sm:mx-0 md:grid-cols-3">
           {entities.map((entity, _) => {
             return (
-              <a className="rounded-md bg-white shadow-sm p-6 sm:p-10 sm:hover:grayscale-0 sm:grayscale" href={entity.url} key={entity.name}>
+              <a className="rounded-md bg-white shadow-sm p-3 sm:p-6 sm:hover:grayscale-0 sm:grayscale" href={entity.url} key={entity.name}>
                 <img
-                  className="max-h-16 w-full object-contain"
+                  className="max-h-24 w-full object-contain"
                   src={entity.logo.sourceUrl}
                   alt={entity.name}
                   width={210}
