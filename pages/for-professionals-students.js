@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
 
@@ -7,10 +7,7 @@ import PageHeader from '../components/common/PageHeader.js';
 import JobList from '../components/forProfessionalsStudents/JobList.js';
 import { JobFilter } from '../components/forProfessionalsStudents/JobFilter.js';
 import Footer from "../components/common/Footer.js";
-
-const createHtml = (htmlString) => {
-  return {__html: htmlString};
-}
+import { createHtmlString } from "../util/wordpressUtil.js";
 
 export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl, jobs }) {
   const [selectedJobs, setSelectedJobs] = useState(jobs);
@@ -34,7 +31,7 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
       />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className="order-last lg:order-first lg:col-span-3 lg:pr-16 wp-text mb-4" dangerouslySetInnerHTML={createHtml(forProfessionalsAndStudentsContent)} />
+          <div className="order-last lg:order-first lg:col-span-3 lg:pr-16 wp-text mb-4" dangerouslySetInnerHTML={createHtmlString(forProfessionalsAndStudentsContent)} />
           <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
             <div className="font-extrabold text-4xl lg:text-6xl pb-6 text-blue-600">Browse Jobs</div>
             <JobFilter

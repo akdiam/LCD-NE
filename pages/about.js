@@ -20,7 +20,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
     <div>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader
-        title={'Our mission'} 
+        title={'Our Mission'} 
         subtitle={'To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.'} 
         headerBackgroundImageClass={headerBackgroundImageClass}
         subtitleSize='text-3xl lg:text-7xl'

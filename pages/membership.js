@@ -3,10 +3,7 @@ import { gql } from "@apollo/client";
 import Header from '../components/common/Header/Header.js';
 import Footer from '../components/common/Footer.js';
 import PageHeader from '../components/common/PageHeader.js';
-
-const createHtml = (htmlString) => {
-  return {__html: htmlString};
-}
+import { createHtmlString } from '../util/wordpressUtil.js';
 
 export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
   return (
@@ -20,7 +17,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
         maxWidth={'lg:max-w-3xl'}
       />
       <div className="max-w-6xl px-6 m-auto py-24">
-        <div className="" dangerouslySetInnerHTML={createHtml(membershipPageContent)} />
+        <div className="" dangerouslySetInnerHTML={createHtmlString(membershipPageContent)} />
       </div>
       <Footer />
     </div>

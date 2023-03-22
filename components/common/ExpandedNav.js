@@ -6,7 +6,7 @@ export default function ExpandedNav({ show }) {
       <ul className="m-auto">
         {navigation.main.map((page, _) => (
           <a href={page.href} key={page.name}>
-            <li className="text-2xl lg:text-3xl font-semibold py-4 px-2 hover:bg-slate-700 rounded-md text-yellow-300">
+            <li className="text-xl lg:text-3xl font-semibold py-4 px-2 hover:bg-slate-700 rounded-md text-yellow-300">
               {page.name}
             </li>
           </a>

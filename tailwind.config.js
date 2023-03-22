@@ -17,7 +17,7 @@ module.exports = {
         'events': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/img_LCD_event-hug.jpeg')",
         'membership': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.55) ), url('../public/membership_header.jpg')",
         'forProfessionalsStudents': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/for_professionals_students_header.jpg')",
-        'contact': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/contact_header.jpg')",
+        'contact': "linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 10, 31, 0.85) ), url('../public/page_headers_search-glass.jpg')",
         'blueTransition': 'linear-gradient(to bottom, #000a1f, #2E3F5F)',
       },
       padding: {

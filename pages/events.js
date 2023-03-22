@@ -4,10 +4,7 @@ import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
 import Footer from '../components/common/Footer.js';
-
-const createHtml = (htmlString) => {
-  return {__html: htmlString};
-}
+import { createHtmlString } from '../util/wordpressUtil.js';
 
 export default function Events({ eventsContent, lcdLogoUrl, events }) {
   return (
@@ -23,7 +20,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
           <div className='order-last lg:order-first lg:col-span-3 lg:pr-10'>
-            <div className="mb-4" dangerouslySetInnerHTML={createHtml(eventsContent)} />
+            <div className="mb-4" dangerouslySetInnerHTML={createHtmlString(eventsContent)} />
           </div>
           <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
             <div className='font-bold text-4xl lg:text-5xl pb-6 text-secondary-600'>Upcoming Events</div>
@@ -74,7 +71,6 @@ export async function getStaticProps() {
   });
   const eventsContent = response?.data?.pages?.nodes[0]?.content;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
-  (response?.data?.events)
   const events = response?.data?.events?.nodes;
 
   return {
