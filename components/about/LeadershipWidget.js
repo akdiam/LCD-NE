@@ -1,7 +1,7 @@
 import { AnimatedHeader } from "../common/AnimatedHeader"
 
 export default function LeadershipWidget({ executiveDirector, operationsManager, execCommittee }) {
-  (executiveDirector)
+  console.log(operationsManager)
   return (
     <div className="bg-secondary py-24 sm:py-36 w-full">
       <div className="max-w-6xl mx-auto grid gap-y-10 sm:gap-y-20 gap-x-8 px-6 xl:grid-cols-3">
@@ -10,14 +10,14 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
           <LeaderCard 
             titleColor='text-yellow-300' 
             headshotSrc={executiveDirector.headshotImage.sourceUrl} 
-            name={executiveDirector.name} 
-            title={executiveDirector.lcdPositionTitle} 
+            name={executiveDirector.name}
+            title={'Executive Director'}
           />
           <LeaderCard 
             titleColor='text-yellow-300' 
             headshotSrc={operationsManager.headshotImage.sourceUrl} 
-            name={operationsManager.name} 
-            title={operationsManager.lcdPositionTitle} 
+            name={operationsManager.name}
+            title={'Operations Manager'} 
           />
         </ul>
         <AnimatedHeader text='Executive Committee' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
