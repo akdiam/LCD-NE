@@ -34,6 +34,7 @@ module.exports = {
         'lcdGray': "#F2F2F2",
         'lcdBlue': '#2E415D',
         'sectionBlue': '#2E3F5F',
+        'jobPostingsBlue': 'rgb(233, 245, 258)',
       },
       maxWidth: {
         'link': '1000px',

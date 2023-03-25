@@ -29,7 +29,7 @@ export const JobFilter = ({ allJobs, allEmployers, setSelectedJobs }) => {
   };
 
   return (
-    <div className='mb-8 bg-lcdGray border border-slate-300 shadow-sm rounded-md'>
+    <div className='mb-8 bg-jobPostingsBlue border border-slate-300 shadow-sm rounded-md'>
       <div className='text-xl font-semibold text-gray-600 pt-5 pb-2 px-4 lg:px-8'>Filter by employer</div>
       <div className='pb-3'>
         {allEmployers.map((employer, _) => (

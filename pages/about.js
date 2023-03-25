@@ -22,9 +22,9 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader
         title={'Our Mission'} 
-        subtitle={'To make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.'} 
+        subtitle={'To make Connecticut and Western Massachusetts prime locations for all attorneys, regardless of background, to practice law.'} 
         headerBackgroundImageClass={headerBackgroundImageClass}
-        subtitleSize='text-3xl lg:text-7xl'
+        subtitleSize='text-3xl lg:text-6xl'
         maxWidth={'lg:max-w-4xl'}
       />
       <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
@@ -55,7 +55,11 @@ We will continue to champion the development of future lawyers from diverse back
           execCommittee={execCommittee}
         />
         <BoardOfDirectorsList members={boardOfDirectors} />
-        <LogoCloud sectionName={'Members'} entities={memberEntities} />
+        <div className='mx-auto py-16'>
+          <LogoCloud sectionName={'Members'} entities={memberEntities} />
+          <LogoCloud sectionName={'Affiliate Organizations'} entities={affiliateOrganizations} />
+          <LogoCloud sectionName={'Law Schools'} entities={lawSchools} />
+        </div>
       </div>
       <Footer />
     </div>

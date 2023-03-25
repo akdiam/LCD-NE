@@ -12,7 +12,7 @@ export default function BoardOfDirectorsList({ members }) {
           {members.map((member) => (
             <li key={member.name}>
               <div className="flex gap-x-6 flex-col">
-                <img className="h-52 saturate-50 hover:saturate-100 bg-gradient-to-b from-white to-transparent transition duration-100 ease-in hover:bg-yellow-200 w-full sm:h-64 lg:h-72 sm:w-full rounded-md object-cover shadow-sm" src={member.headshotImage.sourceUrl} alt="" />
+                <img className="h-52 hover:saturate-100 bg-gradient-to-b from-white to-transparent transition duration-100 ease-in w-full sm:h-64 lg:h-72 sm:w-full rounded-md object-cover shadow-sm" src={member.headshotImage.sourceUrl} alt="" />
                 <div className="pt-2 sm:pt-4">
                   <div className="text-base sm:text-lg font-semibold leading-8 tracking-tight text-white leading-normal">{member.name}</div>
                   <div className="text-xs sm:text-sm font-thin leading-2 sm:leading-6 text-gray-300 mt-1">{member.company}</div>

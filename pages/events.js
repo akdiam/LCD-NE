@@ -12,7 +12,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Events' 
-        subtitle={'We offer a robust programming schedule throughout the year, with various events that you can benefit from - no matter what.'} 
+        subtitle={'We offer a robust events calendar with a variety of events that you can benefit from no matter where you are in your career.'} 
         headerBackgroundImageClass='bg-events'
         subtitleSize={'text-3xl lg:text-5xl'} 
         maxWidth='lg:max-w-4xl'

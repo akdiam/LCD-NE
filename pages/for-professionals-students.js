@@ -25,21 +25,21 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
       <PageHeader 
         title='For Professionals & Students'
         headerBackgroundImageClass='bg-forProfessionalsStudents'
-        subtitle={'LCD features job postings for organizations and attorneys across all practice areas.'}
-        subtitleSize='text-3xl lg:text-5xl'
+        subtitle={'LCD offers numerous professional development and career opportunities for everyone; from practicing attorneys, to students interested in pursuing legal careers.'}
+        subtitleSize='text-2xl lg:text-4xl'
         maxWidth='lg:max-w-3xl' 
       />
       <div className="max-w-6xl m-auto py-20 px-6">
         <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
           <div className="order-last lg:order-first lg:col-span-3 lg:pr-16 wp-text mb-4" dangerouslySetInnerHTML={createHtmlString(forProfessionalsAndStudentsContent)} />
           <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
-            <div className="font-extrabold text-4xl lg:text-6xl pb-6 text-blue-600">Browse Jobs</div>
+            <div className="font-extrabold text-4xl lg:text-6xl pb-6 text-black">Browse Jobs</div>
             <JobFilter
               allJobs={jobs}
               allEmployers={employers}
               setSelectedJobs={setSelectedJobs}
             />
-            <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
+            <div className='bg-jobPostingsBlue border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
               <JobList jobs={selectedJobs} />
             </div>
           </div>
