@@ -12,7 +12,6 @@ import LogoCloud from '../components/about/LogoCloud.js';
 import Footer from '../components/common/Footer.js';
 
 export default function About({ members, affiliateEntities, lcdLogoUrl }) {
-  console.log(members);
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
