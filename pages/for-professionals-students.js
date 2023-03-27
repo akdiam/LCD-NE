@@ -1,3 +1,4 @@
+import Head from 'next/head.js';
 import { useState } from "react";
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
@@ -20,7 +21,11 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
   });
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>For Professionals & Students - Lawyers Collaborative for Diversity</title>
+        <meta name="description" content="For Professionals & Students - Lawyers Collaborative for Diversity (LCD)." />
+      </Head>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='For Professionals & Students'
@@ -46,7 +51,7 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

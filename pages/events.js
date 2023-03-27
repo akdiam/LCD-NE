@@ -1,5 +1,7 @@
+import Head from 'next/head.js';
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
+
 import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
@@ -8,7 +10,11 @@ import { createHtmlString } from '../util/wordpressUtil.js';
 
 export default function Events({ eventsContent, lcdLogoUrl, events }) {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Events - Lawyers Collaborative for Diversity</title>
+        <meta name="description" content="Events for Lawyers Collaborative for Diversity (LCD)." />
+      </Head>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Events' 
@@ -31,7 +37,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

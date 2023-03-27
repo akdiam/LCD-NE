@@ -1,5 +1,7 @@
+import Head from 'next/head.js';
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
+
 import Header from '../components/common/Header/Header.js';
 import Footer from '../components/common/Footer.js';
 import PageHeader from '../components/common/PageHeader.js';
@@ -7,7 +9,11 @@ import { createHtmlString } from '../util/wordpressUtil.js';
 
 export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
   return (
-    <div>
+    <>
+      <Head>
+        <title>Membership - Lawyers Collaborative for Diversity</title>
+        <meta name="description" content="Membership at Lawyers Collaborative for Diversity (LCD)." />
+      </Head>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Membership' 
@@ -20,7 +26,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
         <div className="" dangerouslySetInnerHTML={createHtmlString(membershipPageContent)} />
       </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

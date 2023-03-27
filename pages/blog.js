@@ -1,3 +1,4 @@
+import Head from 'next/head.js';
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
 
@@ -8,6 +9,10 @@ import Footer from "../components/common/Footer";
 export default function Blog({ lcdLogoUrl }) {
   return (
     <div className="w-full">
+      <Head>
+        <title>Blog - Lawyers Collaborative for Diversity</title>
+        <meta name="description" content="Blog of Lawyers Collaborative for Diversity (LCD)." />
+      </Head>
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Blog' 
