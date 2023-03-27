@@ -46,7 +46,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
               <div className='text-xl sm:text-4xl font-bold'>
                 Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color.
               </div>
-              <div className='text-md sm:text-lg pt-4'>
+              <div className='text-md sm:text-lg pt-4 text-gray-600'>
                 As the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
             <div className='order-last sm:order-first flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'>
               <div className='text-xl sm:text-3xl font-bold'>
                 The students and professionals that have participated in our programs over the years have gone on to have very successful careers.</div>
-              <div className='text-md sm:text-lg pt-4'>
+              <div className='text-md sm:text-lg pt-4 text-gray-600'>
                 Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers. We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
               </div>
             </div>
