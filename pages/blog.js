@@ -98,7 +98,7 @@ export default function Blog({ lcdLogoUrl }) {
         </div>
         <div className='all-posts grid lg:grid-cols-3 gap-6'>
           {all_posts.map((post, _) => (
-            <div className='p-4 border border-red-400 w-full'>
+            <div key={post.title} className='p-4 border border-red-400 w-full'>
               <div>
                 {post.title}
               </div>
