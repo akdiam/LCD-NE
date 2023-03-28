@@ -15,9 +15,6 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
-  const name = "Our mission is to make Connecticut and Western Massachusetts prime locations for attorneys of color to practice law.";
-  const headerBackgroundImageClass = 'bg-about';
-
   return (
     <div>
       <Head>
@@ -28,12 +25,12 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
       <PageHeader
         title={'Our Mission'} 
         subtitle={'To make Connecticut and Western Massachusetts prime locations for all attorneys, regardless of background, to practice law.'} 
-        headerBackgroundImageClass={headerBackgroundImageClass}
+        headerBackgroundImageClass={'bg-about'}
         subtitleSize='text-3xl lg:text-5xl'
         maxWidth={'lg:max-w-4xl'}
       />
       <div className= "flex flex-wrap flex-row m-auto content-center bg-gray-400/5">
-        <div className="w-full max-w-6xl px-6 mx-auto py-24 sm:py-36">
+        <div className="w-full max-w-7xl px-6 mx-auto py-24 sm:py-36">
           <div className="text-xl sm:text-3xl text-gray-400 font-semibold leading-loose mb-2">Our Story</div>
           <div className="text-3xl lg:text-5xl text-black font-bold leading-snug pb-8 sm:pb-16">
             LCD began in 2003 as The Connecticut Lawyers Group, in response to the need to advance diversity in Connecticut’s legal profession.
@@ -42,7 +39,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 sm:pt-20 pb-12'>
             <img className='rounded-md my-auto w-full h-auto object-cover shadow-lg' src='leadership.jpg' />
             <div className='flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'>
-              <div className='text-xl sm:text-4xl font-bold'>
+              <div className='text-xl sm:text-2xl lg:text-4xl font-bold'>
                 Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color.
               </div>
               <div className='text-md sm:text-lg pt-4 text-gray-600'>
@@ -52,7 +49,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-0 sm:pt-12'>
             <div className='order-last sm:order-first flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'>
-              <div className='text-xl sm:text-3xl font-bold'>
+              <div className='text-xl sm:text-2xl lg:text-4xl font-bold'>
                 The students and professionals that have participated in our programs over the years have gone on to have very successful careers.</div>
               <div className='text-md sm:text-lg pt-4 text-gray-600'>
                 Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers. We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
@@ -115,13 +112,11 @@ export async function getStaticProps() {
       }
     }
   `
-  
+
   const response = await client.query({
     query: GET_ABOUT_INFO,
   });
 
-  // Once we get the response back, we need to traverse it to pull out the 
-  // data we want to pass into the HomePage
   const members = response?.data?.members?.nodes; 
   const affiliateEntities = response?.data?.affiliateEntities?.nodes;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;

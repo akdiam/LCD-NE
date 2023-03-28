@@ -3,7 +3,7 @@ import { AnimatedHeader } from "../common/AnimatedHeader"
 export default function LeadershipWidget({ executiveDirector, operationsManager, execCommittee }) {
   return (
     <div className="bg-secondary py-24 sm:py-36 w-full">
-      <div className="max-w-6xl mx-auto grid gap-y-10 sm:gap-y-20 gap-x-8 px-6 xl:grid-cols-3">
+      <div className="max-w-7xl mx-auto grid gap-y-10 sm:gap-y-20 gap-x-8 px-6 xl:grid-cols-3">
         <AnimatedHeader text='Our Team' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
         <ul role="list" className="grid gap-x-8 gap-y-12 grid-cols-2 sm:gap-y-16 xl:col-span-2">
           <LeaderCard 

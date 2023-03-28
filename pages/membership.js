@@ -22,7 +22,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
         subtitleSize={'text-3xl lg:text-6xl'}
         maxWidth={'lg:max-w-3xl'}
       />
-      <div className="max-w-6xl px-6 m-auto py-24">
+      <div className="max-w-7xl px-6 m-auto py-24">
         <div className="" dangerouslySetInnerHTML={createHtmlString(membershipPageContent)} />
       </div>
       <Footer />

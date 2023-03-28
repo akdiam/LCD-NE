@@ -23,17 +23,15 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
         subtitleSize={'text-3xl lg:text-5xl'} 
         maxWidth='lg:max-w-4xl'
       />
-      <div className="max-w-6xl m-auto py-20 px-6">
-        <div className='grid gap-x-6 grid-cols-1 lg:grid-cols-5'>
-          <div className='order-last lg:order-first lg:col-span-3 lg:pr-10'>
-            <div className="mb-4" dangerouslySetInnerHTML={createHtmlString(eventsContent)} />
+      <div className="max-w-7xl m-auto py-20 px-6">
+        <div className='pb-12 lg:pl-12 lg:w-2/5 lg:pt-2 lg:float-right'>
+          <div className='font-bold text-4xl lg:text-5xl pb-6 text-secondary-600'>Upcoming Events</div>
+          <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
+            <EventList events={events} />
           </div>
-          <div className='order-first lg:order-last pb-12 lg:pb-0 lg:col-span-2 lg:pt-2'>
-            <div className='font-bold text-4xl lg:text-5xl pb-6 text-secondary-600'>Upcoming Events</div>
-            <div className='bg-lcdGray border border-slate-300 shadow-xl rounded-md h-96 lg:h-eventWidget overflow-auto'>
-              <EventList events={events} />
-            </div>
-          </div>
+        </div>
+        <div className='wp-text mb-4 lg:w-full'>
+          <div className="mb-4" dangerouslySetInnerHTML={createHtmlString(eventsContent)} />
         </div>
       </div>
       <Footer />

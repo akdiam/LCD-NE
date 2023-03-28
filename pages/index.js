@@ -30,7 +30,7 @@ export default function Home({ lcdLogoUrl, events }) {
       <div className='w-full'>
         <Header lcdLogoUrl={lcdLogoUrl} />
         <div className='h-screen md:h-screen bg-hero bg-cover bg-center bg-top text-center'>
-          <div className='text-white text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold max-w-6xl mx-auto my-auto pt-90pcnt md:pt-30pcnt px-6'>
+          <div className='text-white text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-90pcnt md:pt-30pcnt px-6'>
             Dedicated to building a legal community in which all lawyers can thrive and succeed.
           </div>
           <button className='bg-yellow-300 hover:bg-yellow-400 mt-12 py-3 px-5 rounded-md'>
@@ -41,7 +41,7 @@ export default function Home({ lcdLogoUrl, events }) {
             </a>
           </button>
         </div>
-        <div className='max-w-6xl mx-auto'>
+        <div className='max-w-7xl mx-auto'>
           <div className='px-6 pt-24 pb-12 text-3xl lg:text-5xl font-bold'>Upcoming Events</div>
           <div className='grid lg:grid-cols-3 mb-24'>
             {featuredEvents.map((event, _) => (

@@ -7,7 +7,7 @@ export default function ContactForm() {
       <div className="absolute inset-0">
         <div className="absolute inset-y-0 left-0 w-1/2" />
       </div>
-      <div className="relative mx-auto max-w-6xl lg:grid lg:grid-cols-5">
+      <div className="relative mx-auto max-w-7xl lg:grid lg:grid-cols-5">
         <div className="py-16 px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12">
           <div className="mx-auto max-w-lg">
             <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">LCD Contact form</h2>

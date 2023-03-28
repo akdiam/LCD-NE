@@ -23,7 +23,7 @@ export default function HeaderComponent({ lcdLogoUrl }) {
   return (
     <>
       <div className='w-full fixed top-0 z-50'>
-        <div className='font-bold flex flex-wrap mx-auto justify-between max-w-6xl px-6'>
+        <div className='font-bold flex flex-wrap mx-auto justify-between max-w-7xl px-6'>
           <div className='w-1/2'>
             <div className={`${!isLcdLogoVisible ? 'invisible' : 'visible'} mt-4 pt-4`}>
               <a href='/'>

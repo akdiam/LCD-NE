@@ -4,7 +4,7 @@ import { AnimatedHeader } from '../common/AnimatedHeader';
 export default function BoardOfDirectorsList({ members }) {
   return (
     <div className="w-full bg-blue-700">
-      <div className="max-w-6xl mx-auto px-6 py-24 sm:py-36 animated-border">
+      <div className="max-w-7xl mx-auto px-6 py-24 sm:py-36 animated-border">
         <div className='sm:max-w-xl'>
           <AnimatedHeader text="Board of Directors" textSize="text-6xl" textColor="text-white" underlineColor="text-yellow-300" />
         </div>
