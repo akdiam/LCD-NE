@@ -44,6 +44,7 @@ module.exports = {
       },
       height: {
         'eventWidget': '584px',
+        'blog': '600px',
       },
     },
   },

@@ -16,7 +16,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
   return (
-    <div>
+    <>
       <Head>
         <title>About - Lawyers Collaborative for Diversity (LCD)</title>
         <meta name="description" content="Learn about Lawyers Collaborative for Diversity's mission and people." />
@@ -71,7 +71,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 

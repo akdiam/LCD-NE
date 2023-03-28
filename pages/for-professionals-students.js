@@ -10,15 +10,8 @@ import { JobFilter } from '../components/forProfessionalsStudents/JobFilter.js';
 import Footer from "../components/common/Footer.js";
 import { createHtmlString } from "../util/wordpressUtil.js";
 
-export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl, jobs }) {
+export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl, jobs, employers }) {
   const [selectedJobs, setSelectedJobs] = useState(jobs);
-
-  const employers = [];
-  jobs.forEach(job => {
-    if (!employers.includes(job.jobPosting.employer)) {
-      employers.push(job.jobPosting.employer);
-    }
-  });
 
   return (
     <>
@@ -99,11 +92,19 @@ export async function getStaticProps() {
     return dateB - dateA;
   });
 
+  const employers = [];
+  jobs.forEach(job => {
+    if (!employers.includes(job.jobPosting.employer)) {
+      employers.push(job.jobPosting.employer);
+    }
+  });
+
   return {
     props: {
       forProfessionalsAndStudentsContent,
       lcdLogoUrl,
       jobs,
+      employers,
     },
     revalidate: 20,
   }

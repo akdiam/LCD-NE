@@ -72,3 +72,11 @@ p {
 a {
     color: rgb(29 78 216);
 }
+
+a:hover {
+    text-decoration: underline;
+}
+
+.no-underline a:hover {
+    text-decoration: none !important;
+}
