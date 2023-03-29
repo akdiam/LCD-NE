@@ -28,7 +28,7 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         maxWidth='lg:max-w-3xl' 
       />
       <div className="max-w-7xl mx-auto py-20 px-6">
-        <div className='pb-12 lg:pl-12 lg:w-2/5 lg:pt-2 lg:float-right'>
+        <div className='pb-12 lg:pb-20 lg:pl-20 lg:w-2/5 lg:pt-2 lg:float-right'>
           <div className="font-extrabold text-4xl lg:text-6xl pb-6 text-black">Browse Jobs</div>
           <JobFilter
             allJobs={jobs}
@@ -42,7 +42,6 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         <div className='wp-text mb-4 lg:w-full'>
           <div dangerouslySetInnerHTML={createHtmlString(forProfessionalsAndStudentsContent)} />
         </div>
-        {/*<div className="order-last lg:order-first lg:w-3/5 lg:pr-16 wp-text mb-4" dangerouslySetInnerHTML={createHtmlString(forProfessionalsAndStudentsContent)} />*/}
         <div className='clear-both' />
       </div>
       <Footer />
