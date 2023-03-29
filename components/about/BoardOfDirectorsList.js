@@ -5,7 +5,7 @@ export default function BoardOfDirectorsList({ members }) {
   return (
     <div className="w-full bg-blue-700">
       <div className="max-w-7xl mx-auto px-6 py-24 sm:py-36 animated-border">
-        <div className='sm:max-w-xl'>
+        <div className='max-w-xs sm:max-w-xl'>
           <AnimatedHeader text="Board of Directors" textSize="text-6xl" textColor="text-white" underlineColor="text-yellow-300" />
         </div>
         <ul role="list" className="grid gap-x-6 gap-y-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 sm:gap-y-16 xl:col-span-2 pt-8">

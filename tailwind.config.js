@@ -22,6 +22,11 @@ module.exports = {
       },
       padding: {
         '30pcnt': "30%",
+        '40pcnt': "40%",
+        '50pcnt': "50%",
+        '60pcnt': "60%",
+        '70pcnt': "70%",
+        '80pcnt': "80%",
         '90pcnt': "90%",
       },
       zIndex: {

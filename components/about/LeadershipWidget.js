@@ -4,7 +4,9 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
   return (
     <div className="bg-secondary py-24 sm:py-36 w-full">
       <div className="max-w-7xl mx-auto grid gap-y-10 sm:gap-y-20 gap-x-8 px-6 xl:grid-cols-3">
-        <AnimatedHeader text='Our Team' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
+        <div className="max-w-xs">
+          <AnimatedHeader text='Our Team' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
+        </div>
         <ul role="list" className="grid gap-x-8 gap-y-12 grid-cols-2 sm:gap-y-16 xl:col-span-2">
           <LeaderCard 
             titleColor='text-yellow-300' 
@@ -19,7 +21,9 @@ export default function LeadershipWidget({ executiveDirector, operationsManager,
             title={'Operations Manager'} 
           />
         </ul>
-        <AnimatedHeader text='Executive Committee' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
+        <div className="max-w-xs">
+          <AnimatedHeader text='Executive Committee' textColor='text-white' textSize='text-6xl' underlineColor='text-yellow-300' />
+        </div>
         <ul role="list" className="grid gap-x-8 gap-y-12 grid-cols-2 sm:gap-y-16 xl:col-span-2">
           {execCommittee.map((exec) => (
             <LeaderCard

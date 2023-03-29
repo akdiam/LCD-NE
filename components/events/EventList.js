@@ -1,4 +1,5 @@
 import { calcDisplayDate, calcDisplayTimeRange } from "../../util/eventsUtil";
+import YellowButton from "../common/YellowButton";
 
 export default function EventList({ events }) {
   // Sort events by date before rendering
@@ -31,11 +32,9 @@ export default function EventList({ events }) {
                 {event?.events?.eventType === 'Virtual' && event?.events?.eventType}
               </div>
               {event?.events?.callToActionLink && 
-              <a href={event?.events?.callToActionLink}>
-                <button className='bg-yellow-300 hover:bg-yellow-400 text-black rounded-md py-2 px-4 mt-3'>
-                  {event?.events?.callToActionButtonText}
-                </button>
-              </a>
+                <div className="mt-3 mb-1">
+                  <YellowButton text={event?.events?.callToActionButtonText} href={event?.events?.callToActionLink} />
+                </div>
               }
             </div>
           </div>

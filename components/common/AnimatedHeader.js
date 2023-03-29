@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 
-const onLoadAndResize = (textNoSpace, textSize) => {
+const handleOnLoadAndResize = (textNoSpace, textSize) => {
+  onLoadAndResize(textNoSpace, textSize);
+}
+
+const onLoadAndResize = (textNoSpace, textSize, listenerType) => {
   const sectionTitle = document.getElementById(`sectionTitle-${textNoSpace}`);
   const sectionTitleWidth = sectionTitle.getBoundingClientRect().width;
   const tempSpan = document.createElement('span');
@@ -26,6 +30,7 @@ export const AnimatedHeader = ({ text, textColor, textSize, underlineColor }) =>
           beforeElement.classList.remove('before:opacity-0');
           beforeElement.classList.add('before:translate-x-0');
           beforeElement.classList.remove('before:-translate-x-full');
+          observer.unobserve(el);
         } else {
           beforeElement.classList.remove('before:opacity-100');
           beforeElement.classList.add('before:opacity-0');
@@ -36,14 +41,15 @@ export const AnimatedHeader = ({ text, textColor, textSize, underlineColor }) =>
     });
     observer.observe(el);
     onLoadAndResize(textNoSpace, textSize);
+    // observer.unobserve(el);
 
-    const loadEventListener = window.addEventListener('load', () => onLoadAndResize(textNoSpace, textSize));
-    const resizeEventListener = window.addEventListener('resize', () => onLoadAndResize(textNoSpace, textSize));
+    // const loadEventListener = window.addEventListener('load', () => onLoadAndResize(textNoSpace, textSize));
+    // const resizeEventListener = window.addEventListener('resize', () => onLoadAndResize(textNoSpace, textSize));
 
     return () => {
       observer.unobserve(el);
-      window.removeEventListener('load', loadEventListener);
-      window.removeEventListener('resize', resizeEventListener);
+      // window.removeEventListener('load', loadEventListener);
+      // window.removeEventListener('resize', resizeEventListener);
     };
   }, []);
 

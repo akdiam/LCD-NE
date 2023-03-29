@@ -1,10 +1,12 @@
 import Head from 'next/head.js';
 import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
+import { motion } from 'framer-motion';
 
 import Header from '../components/common/Header/Header.js';
 import Footer from '../components/common/Footer.js';
 import { calcDisplayDate, calcDisplayTimeRange } from '../util/eventsUtil.js';
+import YellowButton from '../components/common/YellowButton.js';
 
 const EVENTS_TO_DISPLAY = 3;
 
@@ -30,16 +32,22 @@ export default function Home({ lcdLogoUrl, events }) {
       <div className='w-full'>
         <Header lcdLogoUrl={lcdLogoUrl} />
         <div className='h-screen md:h-screen bg-hero bg-cover bg-center bg-top text-center'>
-          <div className='text-white text-3xl lg:text-4xl xl:text-5xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-90pcnt md:pt-30pcnt px-6'>
+          <motion.div 
+            initial={{ opacity: 0, y: -12 }} 
+            whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }}
+            viewport={{ once: true }}
+            className='text-white text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-96 md:pt-40pcnt lg:pt-30pcnt px-6'
+          >
             Dedicated to building a legal community in which all lawyers can thrive and succeed.
-          </div>
-          <button className='bg-yellow-300 hover:bg-yellow-400 mt-12 py-3 px-5 rounded-md'>
-            <a className='text-black font-normal' href='/about'>
-              <span>
-                Learn more
-              </span>
-            </a>
-          </button>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -12 }} 
+            whileInView={{ opacity: 1, y: 0, transition: { delay: 0.5, duration: 0.5, ease: 'easeOut' } }}
+            viewport={{ once: true }}
+            className='mt-12'
+          >
+            <YellowButton text='Learn more' href='/about' />
+          </motion.div>
         </div>
         <div className='max-w-7xl mx-auto'>
           <div className='px-6 pt-24 pb-12 text-3xl lg:text-5xl font-bold'>Upcoming Events</div>
