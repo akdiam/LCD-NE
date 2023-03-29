@@ -40,10 +40,10 @@ export default function HeaderComponent({ lcdLogoUrl }) {
         <div className='font-bold flex flex-wrap mx-auto justify-between max-w-7xl px-6'>
           <div className='w-1/2'>
             <motion.div 
-              className={`opacity-0 transition-opacity duration-50 ${!isLcdLogoVisible ? '' : 'opacity-100'} mt-4 pt-4`}
-              animate={{ opacity: isLcdLogoVisible ? 1 : 0, y:isLcdLogoVisible ? 0 : isMount ? 0 : -15 }}
-              initial={{ opacity: isMount ? 1 : 0, y: isMount ? 0 : -15 }}
-              exit={{ opacity: isMount ? 1 : 0, y: 0, transition: { duration: 0.1 } }}
+              className={`mt-4 pt-4`}
+              animate={{ opacity: isLcdLogoVisible ? 1 : 0, y: isLcdLogoVisible ? 0 : isMount ? 0 : -15 }}
+              initial={{ y: isMount ? 0 : -15 }}
+              exit={{ y: 0, transition: { duration: 0.1 } }}
             >
               <a href='/'>
                 <img src={lcdLogoUrl} className='h-12 sm:h-16' />
