@@ -36,7 +36,7 @@ export default function Home({ lcdLogoUrl, events }) {
             initial={{ opacity: 0, y: -12 }} 
             whileInView={{ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }}
             viewport={{ once: true }}
-            className='text-white text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-96 md:pt-40pcnt lg:pt-30pcnt px-6'
+            className='text-white text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-80pcnt md:pt-40pcnt lg:pt-30pcnt px-6'
           >
             Dedicated to building a legal community in which all lawyers can thrive and succeed.
           </motion.div>
