@@ -44,15 +44,15 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
           <hr className='h-1 bg-black rounded-md' />
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 sm:pt-20 pb-12'>
             <motion.div 
-              initial={{ opacity: 0.2, x: -100 }} 
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0.1, x: -15 }} 
+              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.0 } }}
               viewport={{ once: true }}
             >
               <img className='rounded-md my-auto w-full h-auto object-cover shadow-lg' src='leadership.jpg' />
             </motion.div>
             <motion.div 
               initial={{ opacity: 0 }} 
-              whileInView={{ opacity: 1, transition: { duration: 1.0 } }}
+              whileInView={{ opacity: 1, transition: { duration: 1.0, ease: 'easeOut' } }}
               viewport={{ once: true }}
               className='flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'
             >
@@ -78,8 +78,8 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0.2, x: 100 }} 
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0.1, x: 15 }} 
+              whileInView={{ opacity: 1, x: 0, transition: { duration: 1.0, ease: 'easeOut' } }}
               viewport={{ once: true }}
             >
               <img className='order-first sm:order-last rounded-md my-auto w-full h-auto object-cover shadow-lg' src='students.webp' />
