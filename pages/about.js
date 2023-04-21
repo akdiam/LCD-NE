@@ -44,7 +44,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
           <hr className='h-1 bg-black rounded-md' />
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 sm:pt-20 pb-12'>
             <motion.div 
-              initial={{ opacity: 0.1, x: -15 }} 
+              initial={{ opacity: 0, x: -15 }} 
               whileInView={{ opacity: 1, x: 0, transition: { duration: 1.0 } }}
               viewport={{ once: true }}
             >
@@ -78,7 +78,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
               </div>
             </motion.div>
             <motion.div 
-              initial={{ opacity: 0.1, x: 15 }} 
+              initial={{ opacity: 0, x: 15 }} 
               whileInView={{ opacity: 1, x: 0, transition: { duration: 1.0, ease: 'easeOut' } }}
               viewport={{ once: true }}
             >

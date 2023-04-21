@@ -80,3 +80,11 @@ a:hover {
 .no-underline a:hover {
     text-decoration: none !important;
 }
+
+.blogGradient {
+    background-image: radial-gradient(circle at top center, #3744b5 15px, #011164);
+}
+
+.blogGradient:hover {
+    background-image: radial-gradient(circle at top center, #5d66bc 15px, #011164);
+}
