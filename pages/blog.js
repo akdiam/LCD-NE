@@ -29,7 +29,7 @@ export default function Blog({ lcdLogoUrl, posts }) {
         <div className="mx-auto w-full pt-12 sm:pt-16 lg:mx-0 md:pt-0">
           <div className="">
             {allPosts.map((post) => (
-              <PostExcerpt post={post} />
+              <PostExcerpt key={post.slug} post={post} />
             ))}
           </div>
         </div>
