@@ -5,96 +5,12 @@ import { gql } from "@apollo/client";
 import Header from '../components/common/Header/Header.js';
 import PageHeader from "../components/common/PageHeader";
 import Footer from "../components/common/Footer";
+import FeaturedPostExcerpt from '../components/blog/FeaturedPostExcerpt.js';
+import PostExcerpt from '../components/blog/PostExcerpt.js';
 
-const latest_post = {
-  "title": "Featured post 1",
-  "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlkajsdlksajdklasjdklasjdklajs.",
-  "date_posted": "March 28, 2023",
-  "src": "leadership.jpg",
-};
-
-const second_latest_post = {
-  "title": "Featured post 2 askjdl alsjd alskdj aslkdj aslkdj askldjas d",
-  "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlka jdsk;lj adk;l ",
-  "date_posted": "March 28, 2023",
-  "src": "leadership.jpg",
-}
-
-const all_posts = [
-  {
-    "title": "Example post 4",
-    "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlkajsdlksajdklasjdklasjdklajs.",
-    "date_posted": "March 28, 2023",
-  },
-  {
-    "title": "Example post 5",
-    "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlkajsdlksajdklasjdklasjdklajs.",
-    "date_posted": "March 28, 2023",
-    "src": "leadership.jpg",
-  },
-  {
-    "title": "Example post 6 alksjd lkasjd lksaj dklasj",
-    "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlkajsdlksajdklasjdklasjdklajs.",
-    "date_posted": "March 28, 2023",
-  },
-  {
-    "title": "Example post 7",
-    "excerpt": "Lorem ipsum blah blah i don't know this hello blah blahlkajsdlksajdklasjdklasjdklajs.",
-    "date_posted": "March 28, 2023",
-    "src": "leadership.jpg",
-  },
-]
-
-const featuredPost = {
-  id: 1,
-  title: 'We’re incredibly proud to announce we have secured $75m in Series B',
-  href: '#',
-  description:
-    'Libero neque aenean tincidunt nec consequat tempor. Viverra odio id velit adipiscing id. Nisi vestibulum orci eget bibendum dictum. Velit viverra posuere vulputate volutpat nunc. Nunc netus sit faucibus.',
-  date: 'Mar 16, 2020',
-  datetime: '2020-03-16',
-  author: {
-    name: 'Michael Foster',
-    href: '#',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-}
-const posts = [
-  {
-    id: 2,
-    title: 'Boost your conversion rate',
-    href: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    date: 'Mar 10, 2020',
-    datetime: '2020-03-16',
-    author: {
-      name: 'Lindsay Walton',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-  {
-    id: 3,
-    title: 'Boost your conversion rate',
-    href: '#',
-    description:
-      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.',
-    date: 'Mar 10, 2020',
-    datetime: '2020-03-16',
-    author: {
-      name: 'Lindsay Walton',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  },
-  // More posts...
-]
-
-export default function Blog({ lcdLogoUrl }) {
+export default function Blog({ lcdLogoUrl, posts }) {
+  const featuredPost = posts.length > 0 && posts[0];
+  const allPosts = posts.slice(1);
   return (
     <div className="w-full">
       <Head>
@@ -108,57 +24,17 @@ export default function Blog({ lcdLogoUrl }) {
         subtitle={'The latest from LCD'}
         subtitleSize='text-3xl lg:text-7xl'
       />
-      <div className="pt-24 mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 lg:grid-cols-2">
-        <article className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-lg">
-          <time dateTime={featuredPost.datetime} className="block text-sm leading-6 text-gray-600">
-            {featuredPost.date}
-          </time>
-          <h2 id="featured-post" className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {featuredPost.title}
-          </h2>
-          <p className="mt-4 text-lg leading-8 text-gray-600">{featuredPost.description}</p>
-          <div className="mt-4 flex flex-col justify-between gap-6 sm:mt-8 sm:flex-row-reverse sm:gap-8 lg:mt-4 lg:flex-col">
-            <div className="flex lg:pb-8 lg:border-b-2 lg:border-black">
-              <a
-                href={featuredPost.href}
-                className="text-sm font-semibold leading-6 text-indigo-600"
-                aria-describedby="featured-post"
-              >
-                Continue reading <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-          </div>
-        </article>
-        <div className="mx-auto w-full max-w-2xl border-t border-gray-900/10 pt-12 sm:pt-16 lg:mx-0 lg:max-w-none lg:border-t-0 lg:pt-0">
-          <div className="divide-y divide-gray-900/10">
-            {posts.map((post) => (
-              <article key={post.id} className="bg-red-400 rounded-md p-4 py-12 mb-4">
-                <div className="group relative max-w-xl">
-                  <time dateTime={post.datetime} className="block text-sm leading-6 text-gray-600">
-                    {post.date}
-                  </time>
-                  <h2 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
-                    <a href={post.href}>
-                      <span className="absolute inset-0" />
-                      {post.title}
-                    </a>
-                  </h2>
-                  <p className="mt-4 text-sm leading-6 text-gray-600">{post.description}</p>
-                </div>
-                <div className="mt-4 flex">
-                  <a
-                    href={post.author.href}
-                    className="relative flex gap-x-2.5 text-sm font-semibold leading-6 text-gray-900"
-                  >
-                    <img src={post.author.imageUrl} alt="" className="h-6 w-6 flex-none rounded-full bg-gray-50" />
-                    {post.author.name}
-                  </a>
-                </div>
-              </article>
+      <div className="pt-24 mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 md:grid-cols-2 pb-20">
+        <FeaturedPostExcerpt featuredPost={featuredPost} />
+        <div className="mx-auto w-full pt-12 sm:pt-16 lg:mx-0 md:pt-0">
+          <div className="">
+            {allPosts.map((post) => (
+              <PostExcerpt post={post} />
             ))}
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
@@ -169,6 +45,14 @@ export async function getStaticProps(){
       mediaItemBy(id: "cG9zdDoyMzU=") {
         sourceUrl
       }
+      posts(where: { orderby: { field: DATE, order:DESC } }) {
+        nodes {
+          excerpt
+          slug
+          date
+          title
+        }
+      }
     }
   `
 
@@ -177,10 +61,12 @@ export async function getStaticProps(){
   });
 
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+  const posts = response?.data?.posts?.nodes;
 
   return {
     props: {
       lcdLogoUrl,
+      posts,
     },
     revalidate: 20,
   }

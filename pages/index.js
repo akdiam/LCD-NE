@@ -8,8 +8,6 @@ import Footer from '../components/common/Footer.js';
 import { calcDisplayDate, calcDisplayTimeRange } from '../util/eventsUtil.js';
 import YellowButton from '../components/common/YellowButton.js';
 
-const EVENTS_TO_DISPLAY = 3;
-
 export default function Home({ lcdLogoUrl, events }) {
   const eventsForSort = [...events];
   events = eventsForSort.sort((a, b) => {
@@ -19,7 +17,8 @@ export default function Home({ lcdLogoUrl, events }) {
   });
 
   let featuredEvents = [];
-  for (let i = 0; i < EVENTS_TO_DISPLAY; i++) {
+  const eventsToDisplay = Math.min(3, events.length);
+  for (let i = 0; i < eventsToDisplay; i++) {
     featuredEvents.push(events[i]);
   }
 
@@ -72,11 +71,9 @@ export default function Home({ lcdLogoUrl, events }) {
                       {event?.events?.eventType === 'Virtual' && event?.events?.eventType}
                     </div>
                     {event?.events?.callToActionLink && 
-                    <a href={event?.events?.callToActionLink}>
-                      <button className='bg-yellow-300 hover:bg-yellow-400 text-black rounded-md py-2 px-4 mt-3'>
-                        {event?.events?.callToActionButtonText}
-                      </button>
-                    </a>
+                      <div className="mt-3 mb-1">
+                        <YellowButton text={event?.events?.callToActionButtonText} href={event?.events?.callToActionLink} />
+                      </div>
                     }
                   </div>
                 </div>
@@ -113,6 +110,13 @@ export async function getStaticProps(){
           slug
         }
       }
+      posts(where: { orderby: { field: DATE, order:DESC } }, first: 3) {
+        nodes {
+          slug
+          postId
+          date
+        }
+      }
     }
   `
 
@@ -120,8 +124,11 @@ export async function getStaticProps(){
     query: GET_HOME_INFO,
   });
 
+  console.log(response.data.posts)
+
   const events = response?.data?.events?.nodes;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+  console.log(events);
 
   return {
     props: {

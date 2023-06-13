@@ -5,6 +5,7 @@ export const navigation = {
     { name: 'Membership', href: '/membership' },
     { name: 'For Professionals & Students', href: '/for-professionals-students' },
     { name: 'Events', href: '/events' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ],
   social: [
