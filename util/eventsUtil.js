@@ -11,10 +11,18 @@ export const calcDisplayTimeRange = (event) => {
   let endTime = event?.events?.endTime;
 
   startTime = startTime.includes(':00') ? startTime.replace(':00 ', '') : startTime;
-  endTime = endTime.includes(':00') ? endTime.replace(':00 ', '') : endTime;
-  if (startTime.slice(-2) === endTime.slice(-2)) {
+
+  if (endTime) {
+    endTime = endTime.includes(':00') ? endTime.replace(':00 ', '') : endTime;
+  } else {
+    endTime = '';
+  }
+
+  if (endTime !== '' && startTime.slice(-2) === endTime.slice(-2)) {
     startTime = startTime.slice(0, -2); 
   }
-  
-  return startTime + ' - ' + endTime;
+
+  return endTime !== ''
+    ? startTime + ' - ' + endTime
+    : startTime;
 }
