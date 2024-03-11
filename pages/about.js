@@ -12,7 +12,7 @@ import LeadershipWidget from '../components/about/LeadershipWidget.js';
 import LogoCloud from '../components/about/LogoCloud.js';
 import Footer from '../components/common/Footer.js';
 
-export default function About({ members, affiliateEntities, lcdLogoUrl }) {
+export default function About({ members, affiliateEntities, lcdLogoUrl, missionStatement }) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
@@ -25,7 +25,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader
         title={'Our Mission'} 
-        subtitle={'To make Connecticut and Western Massachusetts prime locations for all attorneys, regardless of background, to practice law.'} 
+        subtitle={missionStatement} 
         headerBackgroundImageClass={'bg-about'}
         subtitleSize='text-3xl lg:text-5xl'
         maxWidth={'lg:max-w-4xl'}
@@ -138,6 +138,14 @@ export async function getStaticProps() {
       mediaItemBy(id: "cG9zdDoyMzU=") {
         sourceUrl
       }
+      websiteCopy(id: "mission-statement", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
 
@@ -148,12 +156,14 @@ export async function getStaticProps() {
   const members = response?.data?.members?.nodes; 
   const affiliateEntities = response?.data?.affiliateEntities?.nodes;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+  const missionStatement = response?.data?.websiteCopy?.website_copy?.sectionContent + '';
 
   return {
     props: {
       members,
       affiliateEntities,
       lcdLogoUrl,
+      missionStatement,
     },
     revalidate: 20,
   }
