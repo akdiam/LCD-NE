@@ -4,9 +4,11 @@ const EXECUTIVE_DIRECTOR = 'executive_director';
 const EXECUTIVE_COMMITTEE = 'executive_committee';
 const EXECUTIVE_COMMITTEE_ORDER = {
   'President': 0,
-  'President Elect': 1,
-  'Treasurer': 2,
-  'Secretary': 3
+  'Co-President': 1,
+  'President Elect': 2,
+  'Treasurer': 3,
+  'Secretary': 4,
+  'Assistant Treasurer/Secretary': 5
 };
 
 export const parseMembers = (members) => {

@@ -8,7 +8,7 @@ import Footer from '../components/common/Footer.js';
 import { calcDisplayDate, calcDisplayTimeRange } from '../util/eventsUtil.js';
 import YellowButton from '../components/common/YellowButton.js';
 
-export default function Home({ lcdLogoUrl, events }) {
+export default function Home({ lcdLogoUrl, events, heroText }) {
   const eventsForSort = [...events];
   events = eventsForSort.sort((a, b) => {
     const dateA = new Date(a.events.date);
@@ -37,7 +37,7 @@ export default function Home({ lcdLogoUrl, events }) {
             viewport={{ once: true }}
             className='text-white text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl font-extrabold max-w-7xl mx-auto my-auto pt-80pcnt md:pt-40pcnt lg:pt-30pcnt px-6'
           >
-            Dedicated to building a legal community in which all lawyers can thrive and succeed.
+            {heroText}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: -12 }} 
@@ -117,6 +117,14 @@ export async function getStaticProps(){
           date
         }
       }
+      websiteCopy(id: "hero-text-home-page", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
 
@@ -124,16 +132,15 @@ export async function getStaticProps(){
     query: GET_HOME_INFO,
   });
 
-  console.log(response.data.posts)
-
   const events = response?.data?.events?.nodes;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
-  console.log(events);
+  const heroText = response?.data?.websiteCopy?.website_copy?.sectionContent + '';
 
   return {
     props: {
       lcdLogoUrl,
       events,
+      heroText,
     },
     revalidate: 20,
   }
