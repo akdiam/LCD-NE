@@ -1,17 +1,8 @@
-export const navigation = {
-  main: [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Membership', href: '/membership' },
-    { name: 'For Professionals & Students', href: '/for-professionals-students' },
-    { name: 'Events', href: '/events' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  social: [
+export const socialLinks = (socials) => {
+  return [
     {
       name: 'Facebook',
-      href: 'https://www.facebook.com/LawyersCollaborativeForDiversity/',
+      href: socials['facebook'],
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path
@@ -24,7 +15,7 @@ export const navigation = {
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/lcd_ne/',
+      href: socials['instagram'],
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path
@@ -37,7 +28,7 @@ export const navigation = {
     },
     {
       name: 'YouTube',
-      href: 'https://www.youtube.com/@lawyerscollaborativefordiv8778',
+      href: socials['youtube'],
       icon: (props) => (
         <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
           <path
@@ -48,15 +39,40 @@ export const navigation = {
         </svg>
       ),
     },
-  ],
+    {
+      name: 'LinkedIn',
+      href: socials['linkedin'],
+      icon: (props) => (
+        <svg fill="rgb(253 224 71)" viewBox="0 0 24 24" {...props}>
+          <path
+            fillRule="evenodd"
+            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+            clipRule="evenodd"
+          />
+        </svg>
+      ),
+    },
+  ]
 }
 
-export default function Footer() {
+export const navigation = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Membership', href: '/membership' },
+  { name: 'For Professionals & Students', href: '/for-professionals-students' },
+  { name: 'Events', href: '/events' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+];
+
+export default function Footer({ socials }) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-secondary">
       <div className="mx-auto max-w-7xl overflow-hidden py-20 px-6 sm:py-24">
         <nav className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" aria-label="Footer">
-          {navigation.main.map((item) => (
+          {navigation.map((item) => (
             <div key={item.name} className="pb-6">
               <a href={item.href} className="text-md sm:text-lg font-semibold leading-6 text-gray-200 hover:text-gray-100">
                 {item.name}
@@ -65,17 +81,65 @@ export default function Footer() {
           ))}
         </nav>
         <div className="mt-10 flex justify-center space-x-10">
-          {navigation.social.map((item) => (
-            <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+          {socialLinks(socials).map((item) => (
+            <a target="_blank" key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
         </div>
         <p className="mt-10 text-center text-xs leading-5 text-gray-400">
-          &copy; 2023 Lawyers Collaborative for Diversity.
+          &copy; {currentYear} Lawyers Collaborative for Diversity.
         </p>
       </div>
     </footer>
   )
+}
+
+export async function getStaticProps() {
+  const GET_SOCIALS_LINK = gql`
+    query getSocialsLink {
+      youtube: social(id: "youtube", idType: SLUG) {
+        socials_metadata {
+          url
+        }
+      }
+      instagram: social(id: "instagram", idType: SLUG) {
+        socials_metadata {
+          url
+        }
+      }
+      facebook: social(id: "facebook", idType: SLUG) {
+        socials_metadata {
+          url
+        }
+      }
+      linkedin: social(id: "linkedin", idType: SLUG) {
+        socials_metadata {
+          url
+        }
+      }
+    }
+  `
+
+  const response = await client.query({
+    query: GET_SOCIALS_LINK,
+  });
+
+  const youtube = response?.data?.youtube?.socials_metadata?.url;
+  const instagram = response?.data?.instagram?.socials_metadata?.url;
+  const facebook = response?.data?.facebook?.socials_metadata?.url;
+  const linkedin = response?.data?.linkedin?.socials_metadata?.url;
+
+  return {
+    props: {
+      socials: {
+        youtube,
+        instagram,
+        facebook,
+        linkedin,
+      }
+    },
+    revalidate: 60,
+  }
 }

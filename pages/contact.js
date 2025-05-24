@@ -6,8 +6,9 @@ import Header from '../components/common/Header/Header.js';
 import PageHeader from '../components/common/PageHeader.js';
 import ContactForm from '../components/contact/ContactForm.js';
 import Footer from '../components/common/Footer.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function ContactPage({ lcdLogoUrl }) {
+export default function ContactPage({ lcdLogoUrl, socials }) {
   return (
     <>
       <Head>
@@ -22,12 +23,12 @@ export default function ContactPage({ lcdLogoUrl }) {
         subtitleSize='text-3xl lg:text-7xl'
       />
       <ContactForm />
-      <Footer />
+      <Footer socials={socials} />
     </>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_CONTACT_PAGE_CONTENT = gql`
     query getContactPage {
       mediaItemBy(id: "cG9zdDoyMzU=") {
@@ -46,4 +47,4 @@ export async function getStaticProps() {
     },
     revalidate: 120,
   }
-}
+});

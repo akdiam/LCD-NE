@@ -7,8 +7,9 @@ import PageHeader from "../components/common/PageHeader";
 import Footer from "../components/common/Footer";
 import FeaturedPostExcerpt from '../components/blog/FeaturedPostExcerpt.js';
 import PostExcerpt from '../components/blog/PostExcerpt.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function Blog({ lcdLogoUrl, posts }) {
+export default function Blog({ lcdLogoUrl, posts, blogHeader, socials }) {
   const featuredPost = posts.length > 0 && posts[0];
   const allPosts = posts.slice(1);
   return (
@@ -21,7 +22,7 @@ export default function Blog({ lcdLogoUrl, posts }) {
       <PageHeader
         title='Blog'
         headerBackgroundImageClass='bg-contact'
-        subtitle={'The latest from LCD'}
+        subtitle={blogHeader}
         subtitleSize='text-3xl lg:text-7xl'
       />
       <div className="pt-24 mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 md:grid-cols-2 pb-20">
@@ -34,12 +35,12 @@ export default function Blog({ lcdLogoUrl, posts }) {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </div>
   )
 }
 
-export async function getStaticProps(){
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_BLOG_INFO = gql`
     query GetBlogInfo {
       mediaItemBy(id: "cG9zdDoyMzU=") {
@@ -53,6 +54,14 @@ export async function getStaticProps(){
           title
         }
       }
+      blogHeader: websiteCopy(id: "header-blog", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
 
@@ -62,12 +71,14 @@ export async function getStaticProps(){
 
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
   const posts = response?.data?.posts?.nodes;
+  const blogHeader = response?.data?.blogHeader?.website_copy?.sectionContent + '';
 
   return {
     props: {
       lcdLogoUrl,
       posts,
+      blogHeader,
     },
     revalidate: 20,
   }
-}
+});

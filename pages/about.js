@@ -11,8 +11,20 @@ import BoardOfDirectorsList from '../components/about/BoardOfDirectorsList.js';
 import LeadershipWidget from '../components/about/LeadershipWidget.js';
 import LogoCloud from '../components/about/LogoCloud.js';
 import Footer from '../components/common/Footer.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function About({ members, affiliateEntities, lcdLogoUrl, missionStatement }) {
+export default function About({ 
+  members, 
+  affiliateEntities, 
+  lcdLogoUrl, 
+  missionStatement,
+  ourStory,
+  ourStory1a,
+  ourStory1b,
+  ourStory2a,
+  ourStory2b,
+  socials,
+}) {
   const { executiveDirector, operationsManager, execCommittee, boardOfDirectors } = parseMembers(members);
   const { memberEntities, affiliateOrganizations, lawSchools } = parseEntities(affiliateEntities);
 
@@ -39,7 +51,7 @@ export default function About({ members, affiliateEntities, lcdLogoUrl, missionS
             viewport={{ once: true }}
             className="text-3xl lg:text-5xl text-black font-bold leading-snug pb-8 sm:pb-16"
           >
-            LCD began in 2003 as The Connecticut Lawyers Group, in response to the need to advance diversity in Connecticut’s legal profession.
+            {ourStory}
           </motion.div>
           <hr className='h-1 bg-black rounded-md' />
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 pt-12 sm:pt-20 pb-12'>
@@ -57,10 +69,10 @@ export default function About({ members, affiliateEntities, lcdLogoUrl, missionS
               className='flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'
             >
               <div className='text-xl sm:text-2xl lg:text-4xl font-bold'>
-                Today, we continue to support our members’ efforts to identify, recruit, and retain attorneys of color.
+                {ourStory1a}
               </div>
               <div className='text-md sm:text-lg pt-4 text-gray-600'>
-                As the meaning of diversity has broadened, so has our charge. Increasing recruitment, retention, and promotion of a diverse population of attorneys must be cemented as not just good social policy, but as a necessary practice.
+                {ourStory1b}
               </div>
             </motion.div>
           </div>
@@ -72,9 +84,10 @@ export default function About({ members, affiliateEntities, lcdLogoUrl, missionS
               className='order-last sm:order-first flex justify-center align-center flex-col leading-relaxed my-auto text-black sm:mx-12 h-full'
             >
               <div className='text-xl sm:text-2xl lg:text-4xl font-bold'>
-                The students and professionals that have participated in our programs over the years have gone on to have very successful careers.</div>
+                {ourStory2a}
+              </div>
               <div className='text-md sm:text-lg pt-4 text-gray-600'>
-                Whether they are practicing at a law firm, within a corporation, or for a government agency, our program participants credited LCD’s programs with helping to advance their careers. We will continue to champion the development of future lawyers from diverse backgrounds and support our member organizations in creating environments that are authentically inclusive.
+                {ourStory2b}
               </div>
             </motion.div>
             <motion.div 
@@ -98,12 +111,12 @@ export default function About({ members, affiliateEntities, lcdLogoUrl, missionS
           <LogoCloud sectionName={'Law Schools'} entities={lawSchools} />
         </div>
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </>
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_ABOUT_INFO = gql`
     query GetAboutInfo {
       members(first: 100) {
@@ -138,7 +151,47 @@ export async function getStaticProps() {
       mediaItemBy(id: "cG9zdDoyMzU=") {
         sourceUrl
       }
-      websiteCopy(id: "mission-statement", idType: SLUG) {
+      missionStatement: websiteCopy(id: "mission-statement", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
+      ourStory: websiteCopy(id: "our-story-about-page", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
+      ourStory1a: websiteCopy(id: "our-story-continuation-1a-about-page", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
+      ourStory1b: websiteCopy(id: "our-story-continuation-1b-about-page", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
+      ourStory2a: websiteCopy(id: "our-story-continuation-2a-about-page", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
+      ourStory2b: websiteCopy(id: "our-story-continuation-2b-about-page", idType: SLUG) {
         slug
         title
         uri
@@ -156,7 +209,12 @@ export async function getStaticProps() {
   const members = response?.data?.members?.nodes; 
   const affiliateEntities = response?.data?.affiliateEntities?.nodes;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
-  const missionStatement = response?.data?.websiteCopy?.website_copy?.sectionContent + '';
+  const missionStatement = response?.data?.missionStatement?.website_copy?.sectionContent + '';
+  const ourStory = response?.data?.ourStory?.website_copy?.sectionContent + '';
+  const ourStory1a = response?.data?.ourStory1a?.website_copy?.sectionContent + '';
+  const ourStory1b = response?.data?.ourStory1b?.website_copy?.sectionContent + '';
+  const ourStory2a = response?.data?.ourStory2a?.website_copy?.sectionContent + '';
+  const ourStory2b = response?.data?.ourStory2b?.website_copy?.sectionContent + '';
 
   return {
     props: {
@@ -164,7 +222,12 @@ export async function getStaticProps() {
       affiliateEntities,
       lcdLogoUrl,
       missionStatement,
+      ourStory,
+      ourStory1a,
+      ourStory1b,
+      ourStory2a,
+      ourStory2b,
     },
     revalidate: 20,
   }
-}
+});

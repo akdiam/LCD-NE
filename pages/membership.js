@@ -6,8 +6,9 @@ import Header from '../components/common/Header/Header.js';
 import Footer from '../components/common/Footer.js';
 import PageHeader from '../components/common/PageHeader.js';
 import { createHtmlString } from '../util/wordpressUtil.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
+export default function MembershipPage({ membershipPageContent, lcdLogoUrl, membershipHeader, socials }) {
   return (
     <>
       <Head>
@@ -17,7 +18,7 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Membership' 
-        subtitle='LCD welcomes new members who are looking to support diversity and inclusion in the legal profession.' 
+        subtitle={membershipHeader} 
         headerBackgroundImageClass='bg-membership'
         subtitleSize={'text-3xl lg:text-6xl'}
         maxWidth={'lg:max-w-3xl'}
@@ -25,12 +26,12 @@ export default function MembershipPage({ membershipPageContent, lcdLogoUrl }) {
       <div className="max-w-7xl px-6 m-auto py-24">
         <div className="" dangerouslySetInnerHTML={createHtmlString(membershipPageContent)} />
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_MEMBERSHIP_PAGE_CONTENT = gql`
     query getMembershipPage {
       pages(where: {title: "Membership"}) {
@@ -41,6 +42,14 @@ export async function getStaticProps() {
       mediaItemBy(id: "cG9zdDoyMzU=") {
         sourceUrl
       }
+      membershipHeader: websiteCopy(id: "header-membership", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
   const response = await client.query({
@@ -48,12 +57,14 @@ export async function getStaticProps() {
   });
   const membershipPageContent = response?.data?.pages?.nodes[0]?.content;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+  const membershipHeader = response?.data?.membershipHeader?.website_copy?.sectionContent + '';
 
   return {
     props: {
       membershipPageContent,
       lcdLogoUrl,
+      membershipHeader,
     },
     revalidate: 60,
   }
-}
+});

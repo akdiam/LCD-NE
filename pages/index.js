@@ -7,8 +7,9 @@ import Header from '../components/common/Header/Header.js';
 import Footer from '../components/common/Footer.js';
 import { calcDisplayDate, calcDisplayTimeRange } from '../util/eventsUtil.js';
 import YellowButton from '../components/common/YellowButton.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function Home({ lcdLogoUrl, events, heroText }) {
+export default function Home({ lcdLogoUrl, events, heroText, socials }) {
   const eventsForSort = [...events];
   events = eventsForSort.sort((a, b) => {
     const dateA = new Date(a.events.date);
@@ -81,13 +82,13 @@ export default function Home({ lcdLogoUrl, events, heroText }) {
             ))}
           </div>
         </div>
-        <Footer />
+        <Footer socials={socials} />
       </div>
     </>
   )
 }
 
-export async function getStaticProps(){
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_HOME_INFO = gql`
     query GetHomeInfo {
       mediaItemBy(id: "cG9zdDoyMzU=") {
@@ -144,4 +145,4 @@ export async function getStaticProps(){
     },
     revalidate: 20,
   }
-}
+});

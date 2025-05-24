@@ -9,8 +9,9 @@ import JobList from '../components/forProfessionalsStudents/JobList.js';
 import { JobFilter } from '../components/forProfessionalsStudents/JobFilter.js';
 import Footer from "../components/common/Footer.js";
 import { createHtmlString } from "../util/wordpressUtil.js";
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl, jobs, employers }) {
+export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStudentsContent, lcdLogoUrl, jobs, employers, forProfessionalsAndStudentsHeader, socials }) {
   const [selectedJobs, setSelectedJobs] = useState(jobs);
 
   return (
@@ -23,9 +24,9 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
       <PageHeader 
         title='For Professionals & Students'
         headerBackgroundImageClass='bg-forProfessionalsStudents'
-        subtitle={'LCD offers numerous professional development and career opportunities for everyone; from practicing attorneys, to students interested in pursuing legal careers.'}
+        subtitle={forProfessionalsAndStudentsHeader}
         subtitleSize='text-2xl lg:text-4xl'
-        maxWidth='lg:max-w-3xl' 
+        maxWidth='lg:max-w-3xl'
       />
       <div className="max-w-7xl mx-auto py-20 px-6">
         <div className='pb-12 lg:pb-20 lg:pl-20 lg:w-2/5 lg:pt-2 lg:float-right'>
@@ -44,12 +45,12 @@ export default function ForProfessionalsAndStudentsPage({ forProfessionalsAndStu
         </div>
         <div className='clear-both' />
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_FOR_PROF_STUDENTS_CONTENT = gql`
     query getForProfessionalsAndStudentsContent {
       pages(where: {title: "ProfessionalsAndStudents"}) {
@@ -72,6 +73,14 @@ export async function getStaticProps() {
           date
         }
       }
+      forProfessionalsAndStudentsHeader: websiteCopy(id: "header-for-professionals-students", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
 
@@ -81,6 +90,7 @@ export async function getStaticProps() {
 
   const forProfessionalsAndStudentsContent = response?.data?.pages?.nodes[0]?.content;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
+  const forProfessionalsAndStudentsHeader = response?.data?.forProfessionalsAndStudentsHeader?.website_copy?.sectionContent + '';
   let jobs = response?.data?.jobPostings?.nodes;
 
   // Sort events by date before rendering
@@ -104,7 +114,8 @@ export async function getStaticProps() {
       lcdLogoUrl,
       jobs,
       employers,
+      forProfessionalsAndStudentsHeader,
     },
     revalidate: 20,
   }
-}
+});

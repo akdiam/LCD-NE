@@ -7,8 +7,9 @@ import PageHeader from '../components/common/PageHeader.js';
 import EventList from '../components/events/EventList.js';
 import Footer from '../components/common/Footer.js';
 import { createHtmlString } from '../util/wordpressUtil.js';
+import { createCommonStaticProps } from '../util/getCommonStaticProps.js';
 
-export default function Events({ eventsContent, lcdLogoUrl, events }) {
+export default function Events({ eventsContent, lcdLogoUrl, events, eventsHeader, socials }) {
   return (
     <>
       <Head>
@@ -18,7 +19,7 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
       <Header lcdLogoUrl={lcdLogoUrl} />
       <PageHeader 
         title='Events' 
-        subtitle={'We offer a robust events calendar with a variety of events that you can benefit from no matter where you are in your career.'} 
+        subtitle={eventsHeader} 
         headerBackgroundImageClass='bg-events'
         subtitleSize={'text-3xl lg:text-5xl'} 
         maxWidth='lg:max-w-4xl'
@@ -34,12 +35,12 @@ export default function Events({ eventsContent, lcdLogoUrl, events }) {
           <div className="mb-4" dangerouslySetInnerHTML={createHtmlString(eventsContent)} />
         </div>
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = createCommonStaticProps(async () => {
   const GET_EVENTS_CONTENT = gql`
     query getEventsContent {
       pages(where: {title: "Events"}) {
@@ -67,6 +68,14 @@ export async function getStaticProps() {
           slug
         }
       }
+      eventsHeader: websiteCopy(id: "header-events", idType: SLUG) {
+        slug
+        title
+        uri
+        website_copy {
+          sectionContent
+        }
+      }
     }
   `
 
@@ -76,13 +85,15 @@ export async function getStaticProps() {
   const eventsContent = response?.data?.pages?.nodes[0]?.content;
   const lcdLogoUrl = response?.data?.mediaItemBy?.sourceUrl;
   const events = response?.data?.events?.nodes;
+  const eventsHeader = response?.data?.eventsHeader?.website_copy?.sectionContent + '';
 
   return {
     props: {
       eventsContent,
       lcdLogoUrl,
       events,
+      eventsHeader,
     },
     revalidate: 20,
   }
-}
+})
