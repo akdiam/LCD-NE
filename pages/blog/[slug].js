@@ -5,8 +5,9 @@ import Header from '../../components/common/Header/Header.js';
 import PageHeader from '../../components/common/PageHeader.js';
 import Footer from '../../components/common/Footer';
 import { createHtmlString, formatTimestamp } from '../../util/wordpressUtil.js';
+import { createCommonStaticProps } from '../../util/getCommonStaticProps.js';
 
-export default function BlogPost({ lcdLogoUrl, post }) {
+export default function BlogPost({ lcdLogoUrl, post, socials }) {
   return (
     <div className='w-full'>
       <Header lcdLogoUrl={lcdLogoUrl} />
@@ -22,7 +23,7 @@ export default function BlogPost({ lcdLogoUrl, post }) {
       <div className='max-w-7xl mx-auto px-6 py-24'>
         <div dangerouslySetInnerHTML={createHtmlString(post.content)} />
       </div>
-      <Footer />
+      <Footer socials={socials} />
     </div>
   )
 }
@@ -51,7 +52,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false };
 };
 
-export async function getStaticProps({ params }) {
+export const getStaticProps = createCommonStaticProps(async ({ params }) => {
   const slug = params.slug;
 
   const GET_POST = gql`
@@ -83,4 +84,4 @@ export async function getStaticProps({ params }) {
     },
     revalidate: 20, 
   };
-};
+});

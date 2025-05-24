@@ -2,7 +2,7 @@ import { client } from '../lib/apollo.js';
 import { gql } from "@apollo/client";
 
 export function createCommonStaticProps(pageSpecificLogic) {
-    return async () => {
+    return async (context) => {
         const GET_SOCIALS_LINK = gql`
             query getSocialsLink {
             youtube: social(id: "youtube", idType: SLUG) {
@@ -44,7 +44,7 @@ export function createCommonStaticProps(pageSpecificLogic) {
       };
 
       const pageProps = pageSpecificLogic 
-        ? await pageSpecificLogic()
+        ? await pageSpecificLogic(context)
         : { props: {} };
   
       return {
